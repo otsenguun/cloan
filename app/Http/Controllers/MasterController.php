@@ -29,6 +29,8 @@ class MasterController extends Controller
 
 
     }
+
+
     public function user($id){
         $user_index = $id;
         $body["userid"] = $id;
@@ -101,6 +103,13 @@ class MasterController extends Controller
         return view("admin.master.user_confirm",compact("user_images","re_aprove","user","msj"));
     }
     public function total_orders(Request $request){
+
+        $body = [];
+        // $body["pagenumber"] = 1;
+        // $body["pagesize"] = 25;
+        $response = AppHelper::ToCurl("/user/orderBorrowList","get",$body);
+        dd($response);
+
         return view("admin.master.orders");
     }
 

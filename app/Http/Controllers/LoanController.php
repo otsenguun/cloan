@@ -87,7 +87,7 @@ class LoanController extends Controller
         $back = AppHelper::ToCurl("/user/orderLendList","get",$body);
         $lend_list = json_decode($back['body']);
         $code = $back["http_code"];
-        // dd($back1);
+        // dd($back);
         
         return view("admin.loan.history",compact("borrow_list","lend_list"));
 

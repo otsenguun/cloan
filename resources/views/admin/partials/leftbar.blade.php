@@ -17,7 +17,7 @@ $user_roles = App\Helpers\AppHelper::getRole()
             <!-- user -->
             @if(in_array("cl-genuser",$user_roles))
             <li class="dropdown">
-              <a href="{{url('/')}}" class="nav-link"><i class="fas fa-fire"></i><span>Нүүр</span></a>
+              <a href="{{url('/home')}}" class="nav-link"><i class="fas fa-fire"></i><span>Нүүр</span></a>
             </li>
 
             <li class="menu-header">Үйлдэл</li>
@@ -25,8 +25,8 @@ $user_roles = App\Helpers\AppHelper::getRole()
               <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Хэтэвч</span></a>
               <ul class="dropdown-menu">
                 <li><a class="nav-link render" href="{{url('me')}}" urls="{{url('wallet')}}">Үлдэгдэл</a></li>
-                <li><a class="nav-link" href="index.html">Хуулга</a></li>
-                <li><a class="nav-link" href="index.html">Орлого/Зарлага</a></li>
+                <!-- <li><a class="nav-link" href="index.html">Хуулга</a></li>
+                <li><a class="nav-link" href="index.html">Орлого/Зарлага</a></li> -->
               </ul>
             </li>
             <li class="dropdown">

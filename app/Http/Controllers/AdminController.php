@@ -46,5 +46,14 @@ class AdminController extends Controller
         dd($response);
         return view("admin.master.users",compact("users"));
     }
-    
+    public function get_last_curr(Request $request){
+        $body = [];
+        $body['pagenumber'] = 1;
+        $body['pagesize'] = 25;
+        $response2 = AppHelper::ToCurl("/geninfo/convertRateCryptosDistinctLast","post",$body);
+        $cryptos = json_decode($response2["body"]);
+        $arr =  $cryptos->gen_exchrate_cryptolist;
+
+        return json_encode($arr);
+    }
 }
