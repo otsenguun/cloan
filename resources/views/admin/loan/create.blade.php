@@ -30,7 +30,7 @@
 <div class="section-body card-custom">
   <h2 class="section-title">Зээл</h2>
   <!-- <p class="section-lead">We provide advanced input fields, such as date picker, color picker, and so on.</p> -->
-  <form action="{{url('orderBorrow')}}" method="post" class="forme">
+  <form action="{{url('CalculateOrderBorrow')}}" method="post" class="check_form">
   <div class="row">
       
         <div class="col-md-8 col-md-6 col-lg-6">
@@ -73,19 +73,19 @@
                         <label class="form-label">Зээлэх хувь /LTV/</label>
                         <div class="selectgroup w-100">
                         <label class="selectgroup-item">
-                            <input type="radio" name="value" value="50" class="selectgroup-input" checked="">
+                            <input type="radio" name="value" value="50" class="selectgroup-input percent" checked="">
                             <span class="selectgroup-button">20%</span>
                         </label>
                         <label class="selectgroup-item">
-                            <input type="radio" name="value" value="100" class="selectgroup-input">
+                            <input type="radio" name="value" value="100" class="selectgroup-input percent">
                             <span class="selectgroup-button">30%</span>
                         </label>
                         <label class="selectgroup-item">
-                            <input type="radio" name="value" value="150" class="selectgroup-input">
+                            <input type="radio" name="value" value="150" class="selectgroup-input percent">
                             <span class="selectgroup-button">40%</span>
                         </label>
                         <label class="selectgroup-item">
-                            <input type="radio" name="value" value="200" class="selectgroup-input">
+                            <input type="radio" name="value" value="200" class="selectgroup-input percent">
                             <span class="selectgroup-button">50%</span>
                         </label>
                         </div>
@@ -118,19 +118,19 @@
             
                     <tr>
                         <td>Зээлийн дүн</td>
-                        <td>1000</td>
+                        <td align="right" id="calculate_price">-</td>
                     </tr>
                     <tr>
                         <td>Хүү</td>
-                        <td>3%</td>
+                        <td align="right" id="calculate_precent">3%</td>
                     </tr>
                     <tr>
                         <td>Шимтгэл</td>
-                        <td>50₮</td>
+                        <td align="right">50₮</td>
                     </tr>
                     <tr>
                         <td>Виртуал</td>
-                        <td>0,26</td>
+                        <td align="right" id="calculate_crypto">0</td>
                     </tr>
                     </table>
                 </div>
@@ -143,9 +143,11 @@
                     @if($msj != "")
                         <a href="{{url('Loanhistory')}}" class="btn btn-primary btn-icon icon-left render">Жагсаалт</a>
                     @else
-                        <button class="btn btn-primary btn-icon icon-left" type="submit"><i class="fas fa-credit-card"></i> Баталгаажуулах</button>
+                        <!-- <button class="btn btn-primary btn-icon icon-left" type="submit"><i class="fas fa-credit-card"></i> Баталгаажуулах</button> -->
+                        <a class="btn btn-primary btn-icon icon-left hidden" id="borrowconfirm" href="{{url('orderBorrowConfirm')}}"><i class="fas fa-credit-card"></i> Баталгаажуулах</a>
                     @endif   
-                        <button class="btn btn-danger btn-icon icon-left" type="button"><i class="fas fa-times"></i> Цуцлах</button>
+                        <a class="btn btn-danger btn-icon icon-left hidden" id="borrowcancel" href="{{url('orderBorrowCancel')}}"><i class="fas fa-times"></i> Цуцлах</a>
+                 
                     </div>
                     <button class="btn btn-warning btn-icon icon-left" type="button"><i class="fas fa-print"></i> Хэвлэх</button>
                 </div>
@@ -160,3 +162,6 @@
     </div>
     @endsection
     
+    <script>
+       
+    </script>

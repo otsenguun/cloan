@@ -31,7 +31,36 @@
   a.active{
     border: solid 1px;
   }
+  .hidden{
+    display:none;
+  }
 </style>
+
+  <!-- General JS Scripts -->
+  <script src="{{asset('custom/modules/jquery.min.js')}}"></script>
+  <script src="{{asset('custom/modules/popper.js')}}"></script>
+  <script src="{{asset('custom/modules/tooltip.js')}}"></script>
+  <script src="{{asset('custom/modules/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{asset('custom/modules/nicescroll/jquery.nicescroll.min.js')}}"></script>
+  <script src="{{asset('custom/modules/moment.min.js')}}"></script>
+  <script src="{{asset('custom/js/stisla.js')}}"></script>
+  
+  <!-- JS Libraies -->
+  <script src="{{asset('custom/modules/jquery.sparkline.min.js')}}"></script>
+  <script src="{{asset('custom/modules/chart.min.js')}}"></script>
+  <script src="{{asset('custom/modules/owlcarousel2/dist/owl.carousel.min.js')}}"></script>
+  <script src="{{asset('custom/modules/summernote/summernote-bs4.js')}}"></script>
+  <script src="{{asset('custom/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
+
+  <!-- Page Specific JS File -->
+  <script src="{{asset('custom/js/page/index.js')}}"></script>
+  
+  <!-- Template JS File -->
+  <script src="{{asset('custom/js/scripts.js')}}"></script>
+  <script src="{{asset('custom/js/custom.js')}}"></script>
+
+
+
 <!-- /END GA --></head>
 
 <body>
@@ -71,34 +100,6 @@
     </div>
   </div>
 
-  <!-- General JS Scripts -->
-  <script src="{{asset('custom/modules/jquery.min.js')}}"></script>
-  <script src="{{asset('custom/modules/popper.js')}}"></script>
-  <script src="{{asset('custom/modules/tooltip.js')}}"></script>
-  <script src="{{asset('custom/modules/bootstrap/js/bootstrap.min.js')}}"></script>
-  <script src="{{asset('custom/modules/nicescroll/jquery.nicescroll.min.js')}}"></script>
-  <script src="{{asset('custom/modules/moment.min.js')}}"></script>
-  <script src="{{asset('custom/js/stisla.js')}}"></script>
-  
-  <!-- JS Libraies -->
-  <script src="{{asset('custom/modules/jquery.sparkline.min.js')}}"></script>
-  <script src="{{asset('custom/modules/chart.min.js')}}"></script>
-  <script src="{{asset('custom/modules/owlcarousel2/dist/owl.carousel.min.js')}}"></script>
-  <script src="{{asset('custom/modules/summernote/summernote-bs4.js')}}"></script>
-  <script src="{{asset('custom/modules/chocolat/dist/js/jquery.chocolat.min.js')}}"></script>
-
-  <!-- Page Specific JS File -->
-  <script src="{{asset('custom/js/page/index.js')}}"></script>
-  
-  <!-- Template JS File -->
-  <script src="{{asset('custom/js/scripts.js')}}"></script>
-  <script src="{{asset('custom/js/custom.js')}}"></script>
-
-  <script src="https://cdn.amcharts.com/lib/5/index.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/percent.js"></script>
-<script src="https://cdn.amcharts.com/lib/5/themes/Animated.js"></script>
-
-
 
 
   <!-- <script src="{{asset('custom/js/my.js')}}"></script> -->
@@ -129,6 +130,53 @@
         /* Alert the copied text */
         alert("Copied the address: " + copyText.value);
       }
+
+      $(".percent").click(function(e){
+            // e.preventDefault();
+            let form = $(".check_form");
+            let body = form.serialize();
+            // let method = $(this).attr("href");
+            // console.log(body);
+            let url = form.attr("action");
+            let method = form.attr("method");
+            // console.log(method);
+            $.ajax({
+                url: url,
+                method:method,
+                data:body,
+                context: document.body
+                }).done(function(response) {
+
+                    // console.log(response);
+                    
+                    let result = JSON.parse(response);
+
+                    if(result.success == true){
+                    $("#borrowconfirm").removeClass("hidden");
+                    $("#borrowcancel").removeClass("hidden");
+
+
+                    $("#calculate_price").html(result.order_borrow.CL_CONVERTED_FLAT_AMOUNT + " " + result.order_borrow.CL_CONVERTED_FLAT_CURRENCY);
+                    $("#calculate_precent").html("3%");
+                    $("#calculate_crypto").html(result.order_borrow.CL_CRYPTO_AMOUNT);
+                    $("#borrowconfirm").attr("href","{{url('orderBorrowConfirm')}}" + "/" + result.order_borrow.id);
+                    $("#borrowcancel").attr("href","{{url('orderBorrowCancel')}}" + "/" + result.order_borrow.id);
+                    }else{
+                      alert(result.msg);
+                      $("#borrowconfirm").addClass("hidden");
+                      $("#borrowcancel").addClass("hidden");
+
+                    }
+
+            }).fail(function(data, textStatus, xhr) {
+
+                    if(data.status == 401){
+                    window.location.replace("{{url('/me')}}");
+                    }
+                    
+            });
+        });
+
       
       // $(document).on("click",".render",function(e) {
       //   e.preventDefault();

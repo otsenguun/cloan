@@ -20,17 +20,17 @@ class LoanController extends Controller
         return view("admin.loan.create",compact("msj","coins"));
 
     }
-    public function store(Request $request){
+    public function storeCalculate(Request $request){
 
         $body = [];
         $body["crypto_sname"] =  $request->crypto_sname;
         $body["amount"] =  $request->amount;
         $body["priority"] =  $request->priority;
 
-        $back = AppHelper::ToCurl("/useroper/orderBorrow","post",$body);
+        $back = AppHelper::ToCurl("/useroper/orderBorrowCalculate","post",$body);
         $response = json_decode($back['body']);
         $code = $back["http_code"];
-        // dd($back);
+
         if($code == "200" && $response->success == true){
             $msj = "Амжилттай илгээгдлэ";
         }else{
@@ -41,16 +41,28 @@ class LoanController extends Controller
         $coins = json_decode($back2['body']);
         $code = $back["http_code"];
 
-        // dd($response);
-        // return view('auth.register_second',compact("response"));
+        
+        
+        return json_encode($response);
+        // return view("admin.loan.create",compact("msj",'coins'));
 
-        return view("admin.loan.create",compact("msj",'coins'));
+    }
+    public function store($id){
+
+        $body = [];
+        $body["order_id"] =  $id;
+
+        $back = AppHelper::ToCurl("/useroper/orderBorrowConfirm","post",$body);
+        $response = json_decode($back['body']);
+        $code = $back["http_code"];
+        // dd($back);
+        return redirect("/Loanhistory");
 
     }
     public function createloaner(Request $request){
 
         $msj = "";
-        return view("admin.loan.create_loaner",compact("msj"));
+        return redirect("/Loanhistory");
 
     }
 
@@ -93,6 +105,18 @@ class LoanController extends Controller
 
     }
     public function dans(Request $request){
+
+        return view("admin.loan.dans");
+
+    }
+
+    public function CalculateLend(Request $request){
+
+        return view("admin.loan.dans");
+
+    }
+
+    public function CalculateBorrow(Request $request){
 
         return view("admin.loan.dans");
 

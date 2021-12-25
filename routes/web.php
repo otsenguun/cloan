@@ -65,8 +65,13 @@ Route::get('/me',[UserController::class,'me'])->middleware("auth2");
 Route::get('/user_details',[UserController::class,'user_details'])->middleware("auth2");
 Route::post('/user_details_update',[UserController::class,'user_details_update'])->middleware("auth2");
 Route::get('/health',[UserController::class,'health'])->middleware("auth2");
-Route::post('/orderBorrow ',[LoanController::class,'store'])->middleware("auth2");
+
+
+Route::post('/CalculateOrderBorrow  ',[LoanController::class,'storeCalculate'])->middleware("auth2");
+Route::get('/orderBorrowConfirm/{id}  ',[LoanController::class,'store'])->middleware("auth2");
+
 Route::post('/orderLend ',[LoanController::class,'storeLoaner'])->middleware("auth2");
+
 Route::get('/get_last_curr ',[AdminController::class,'get_last_curr'])->middleware("auth2");
 
 //operator
