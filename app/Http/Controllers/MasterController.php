@@ -32,24 +32,27 @@ class MasterController extends Controller
 
 
     public function user($id){
-        $user_index = $id;
-        $body["userid"] = $id;
+        $user_index = explode("_",$id);
+        $body["userid"] = $user_index[0];
 
         $body["index"] = 0;
-        $isaproved = 1;
+        $isaproved = $user_index[2];
         $response1 = AppHelper::ToCurl("/admin/userdetail","post",$body);
         $body["index"] = 1;
         $response2 = AppHelper::ToCurl("/admin/userdetail","post",$body);
         $body["index"] = 2;
         $response3 = AppHelper::ToCurl("/admin/userdetail","post",$body);
 
-        
         $user_info = $response1["body"];
         $user_info2 = $response2["body"];
         $user_info3 = $response3["body"];
+
         $user_images = [
             $user_info,$user_info2,$user_info3
         ];
+        
+        // print_r($user_images);
+
         $user = new \stdClass;
         $user->id = $id;;
         if($isaproved == 1){

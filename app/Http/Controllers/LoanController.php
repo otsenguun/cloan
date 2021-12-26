@@ -61,18 +61,43 @@ class LoanController extends Controller
     }
     public function createloaner(Request $request){
 
-        $msj = "";
-        return redirect("/Loanhistory");
+        $msj = ""; 
+        
+        return view("admin.loan.create_loaner",compact("msj"));  return redirect("/Loanhistory");
 
     }
 
-    public function storeLoaner(Request $request){
+    public function calculateLoaner(Request $request){
+
         $body = [];
-        $body["currency"] =  $request->currency;
+        $body["currency"] =  "MNT";
         $body["amount"] =  $request->amount;
         $body["priority"] =  99;
 
-        $back = AppHelper::ToCurl("/useroper/orderLend","post",$body);
+        if($request->amount > 0){
+            $back = AppHelper::ToCurl("/useroper/orderLendCalculate","post",$body);
+            $response = json_decode($back['body']);
+    
+            $code = $back["http_code"];
+            $msj = "";
+            // dd($back);
+    
+            if($code == "200" && $response->success == true){
+                $msj = "Амжилттай илгээгдлэ";
+            }else{
+                $msj = $response->msg;
+            }
+            return json_encode($response);
+        }else{
+            return "false";
+        }
+    }
+
+    public function storeLoaner($id){
+        $body = [];
+        $body["order_id"] =  $id;
+
+        $back = AppHelper::ToCurl("/useroper/orderLendConfirm","post",$body);
         $response = json_decode($back['body']);
         $code = $back["http_code"];
         // dd($back);
@@ -82,7 +107,7 @@ class LoanController extends Controller
             $msj = $response->msg;
         }
       
-        return view("admin.loan.create_loaner",compact("msj"));
+        return redirect("/Loanhistory");
 
     }
     public function historyLoan(Request $request){
@@ -110,15 +135,39 @@ class LoanController extends Controller
 
     }
 
-    public function CalculateLend(Request $request){
+    public function BorrowCancel($id){
+        $body = [];
+        $body["order_id"] =  $id;
 
-        return view("admin.loan.dans");
+        $back = AppHelper::ToCurl("/useroper/orderBorrowCancel","post",$body);
+        $response = json_decode($back['body']);
+        $code = $back["http_code"];
+        // dd($back);
+        if($code == "200" && $response->success == true){
+            $msj = "Амжилттай илгээгдлэ";
+        }else{
+            $msj = $response->msg;
+        }
+      
+        return redirect("/Loanhistory");
 
     }
 
-    public function CalculateBorrow(Request $request){
+    public function LendCancel($id){
+        $body = [];
+        $body["order_id"] =  $id;
 
-        return view("admin.loan.dans");
+        $back = AppHelper::ToCurl("/useroper/orderLendCancel","post",$body);
+        $response = json_decode($back['body']);
+        $code = $back["http_code"];
+        // dd($back);
+        if($code == "200" && $response->success == true){
+            $msj = "Амжилттай илгээгдлэ";
+        }else{
+            $msj = $response->msg;
+        }
+      
+        return redirect("/Loanhistory");
 
     }
     

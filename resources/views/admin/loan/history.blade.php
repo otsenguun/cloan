@@ -50,7 +50,7 @@
                           </td>
 
                           <td>{{$borrow->CL_CRYPTO_AMOUNT}}</td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                          <td><a href="{{url('orderBorrowCancel',$borrow->id)}}" class="btn btn-danger cancel">Цуцлах</a></td>
                         </tr>
                         @endforeach
                       </table>
@@ -104,7 +104,7 @@
                           </td>
 
                           <td>{{$lend->CL_TXN_AMOUNT}}</td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                          <td><a href="{{url('orderLendCancel',$lend->id)}}" class="btn btn-danger cancel">Цуцлах</a></td>
                         </tr>
                         @endforeach
                       </table>

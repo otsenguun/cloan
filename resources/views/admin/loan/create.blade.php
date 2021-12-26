@@ -112,7 +112,7 @@
         </div>
         <div class="col-md-6">
             <div class="row mt-4">
-                <div class="col-md-12">
+                <div class="col-md-12 result_div">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-md">
             
@@ -140,14 +140,9 @@
             <hr>
                 <div class="text-md-right">
                     <div class="float-lg-left mb-lg-0 mb-3">
-                    @if($msj != "")
-                        <a href="{{url('Loanhistory')}}" class="btn btn-primary btn-icon icon-left render">Жагсаалт</a>
-                    @else
-                        <!-- <button class="btn btn-primary btn-icon icon-left" type="submit"><i class="fas fa-credit-card"></i> Баталгаажуулах</button> -->
-                        <a class="btn btn-primary btn-icon icon-left hidden" id="borrowconfirm" href="{{url('orderBorrowConfirm')}}"><i class="fas fa-credit-card"></i> Баталгаажуулах</a>
-                    @endif   
-                        <a class="btn btn-danger btn-icon icon-left hidden" id="borrowcancel" href="{{url('orderBorrowCancel')}}"><i class="fas fa-times"></i> Цуцлах</a>
-                 
+                    
+                        <button class="btn btn-primary btn-icon icon-left" id="checkBorrow" type="button"><i class="fas fa-credit-card"></i> Шалгах</button>
+
                     </div>
                     <button class="btn btn-warning btn-icon icon-left" type="button"><i class="fas fa-print"></i> Хэвлэх</button>
                 </div>

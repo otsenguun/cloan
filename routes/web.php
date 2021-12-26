@@ -37,7 +37,10 @@ Route::get('/confirm',[HomeController::class,'confirm']);
 
 Route::get('/user_details_org',[HomeController::class,'user_details_org']);
 Route::get('/create_loan',[LoanController::class,'create']);
+Route::get('/calculateLoaner',[LoanController::class,'calculateLoaner']);
 Route::get('/create_loaner',[LoanController::class,'createLoaner']);
+
+
 Route::get('/dans',[LoanController::class,'dans']);
 Route::get('/Loanhistory',[LoanController::class,'historyLoan']);
 
@@ -69,6 +72,11 @@ Route::get('/health',[UserController::class,'health'])->middleware("auth2");
 
 Route::post('/CalculateOrderBorrow  ',[LoanController::class,'storeCalculate'])->middleware("auth2");
 Route::get('/orderBorrowConfirm/{id}  ',[LoanController::class,'store'])->middleware("auth2");
+Route::get('/orderLendConfirm/{id}  ',[LoanController::class,'storeLoaner'])->middleware("auth2");
+
+Route::get('/orderBorrowCancel/{id}  ',[LoanController::class,'BorrowCancel'])->middleware("auth2");
+Route::get('/orderLendCancel/{id}  ',[LoanController::class,'LendCancel'])->middleware("auth2");
+
 
 Route::post('/orderLend ',[LoanController::class,'storeLoaner'])->middleware("auth2");
 

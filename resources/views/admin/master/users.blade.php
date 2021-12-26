@@ -63,10 +63,15 @@
                                     <td>{{$user->CL_MOBILE}}</td>
                                     <td>{{$user->CL_USERNAME}}</td>
                                     <td>{{$user->CL_CREATED_DATE}}</td>
-                                    
-                                 
+                                    <td>
+                                      @if($user->legit->CL_KYC_ISAPPROVED == "true")
+                                      <div class="badge badge-success">Баталгаажсан</div>
+                                      @else
+                                      <div class="badge badge-danger">Баталгаажаагүй</div>
+                                      @endif
+                                    </td>
 
-                                    <td><a class="render" href="{{url('user',$user->id)}}" class="btn btn-secondary">Харах</a></td>
+                                    <td><a class="render" href="{{url('user',$user->id).'_1_'.$user->legit->CL_KYC_ISAPPROVED}}" class="btn btn-secondary">Харах</a></td>
                                   </tr>
                                   @endforeach
                                 </table>

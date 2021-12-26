@@ -100,6 +100,28 @@
     </div>
   </div>
 
+  <div class="modal" tabindex="-1" role="coin_re_fill" id="confirm_form">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title confirm_header" ></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body ">
+          <div class="show"></div>
+          <div> <a href="/" class="btn btn-primary" target="blank">PDF</a> </div>
+        </div>
+        <div class="modal-footer">
+          <a href="#" id="borrowconfirm" type="button" class="btn btn-primary">Баталгаажуулах</a>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 
 
   <!-- <script src="{{asset('custom/js/my.js')}}"></script> -->
@@ -131,7 +153,7 @@
         alert("Copied the address: " + copyText.value);
       }
 
-      $(".percent").click(function(e){
+      $("#checkBorrow").click(function(e){
             // e.preventDefault();
             let form = $(".check_form");
             let body = form.serialize();
@@ -161,6 +183,11 @@
                     $("#calculate_crypto").html(result.order_borrow.CL_CRYPTO_AMOUNT);
                     $("#borrowconfirm").attr("href","{{url('orderBorrowConfirm')}}" + "/" + result.order_borrow.id);
                     $("#borrowcancel").attr("href","{{url('orderBorrowCancel')}}" + "/" + result.order_borrow.id);
+                    let clone_div = $(".result_div");
+                    $(".confirm_header").html("Зээлэх хүсэлт");
+                    $(".show").html($(clone_div).html());
+
+                    $('#confirm_form').modal('show');
                     }else{
                       alert(result.msg);
                       $("#borrowconfirm").addClass("hidden");
@@ -176,6 +203,71 @@
                     
             });
         });
+       
+          $( "#checkLend" ).click(function() {
+            // e.preventDefault();
+            let form = $(".calculateLoaner");
+            let body = form.serialize();
+            // let method = $(this).attr("href");
+            // console.log(body);
+            let url = form.attr("action");
+            let method = form.attr("method");
+            // console.log(method);
+            $.ajax({
+                url: url,
+                method:method,
+                data:body,
+                context: document.body
+                }).done(function(response) {
+
+                    // console.log(response);
+                    
+                    let result = JSON.parse(response);
+                    // console.log(result);
+
+                    if(result.success == true){
+                    $("#borrowconfirm").removeClass("hidden");
+                    $("#borrowcancel").removeClass("hidden");
+
+                      
+                    $("#calculate_price").html(result.order_lend.CL_TXN_AMOUNT + " " + result.order_lend.CL_CURRENCY);
+                    $("#calculate_precent").html("3%");
+                    $("#borrowconfirm").attr("href","{{url('orderLendConfirm')}}" + "/" + result.order_lend.id);
+                    $("#borrowcancel").attr("href","{{url('orderLendCancel')}}" + "/" + result.order_lend.id);
+                    
+                    let clone_div = $(".result_div");
+                    $(".confirm_header").html("Зээлдүүлэх хүсэлт");
+                    $(".show").html($(clone_div).html());
+
+                    $('#confirm_form').modal('show');
+                    }else{
+                      alert(result.msg);
+                      $("#borrowconfirm").addClass("hidden");
+                      $("#borrowcancel").addClass("hidden");
+
+                    }
+
+            }).fail(function(data, textStatus, xhr) {
+
+                    if(data.status == 401){
+                    window.location.replace("{{url('/me')}}");
+                    }
+                    
+            });
+        });
+
+        // $(".cancel").click(function(){
+        //   e.preventDefault();
+
+        // });
+        var elems = document.getElementsByClassName('cancel');
+        var confirmIt = function (e) {
+            if (!confirm('Are you sure?')) e.preventDefault();
+        };
+        for (var i = 0, l = elems.length; i < l; i++) {
+            elems[i].addEventListener('click', confirmIt, false);
+        }
+
 
       
       // $(document).on("click",".render",function(e) {
