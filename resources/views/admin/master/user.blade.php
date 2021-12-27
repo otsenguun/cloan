@@ -68,51 +68,52 @@
                       <h4>Засах</h4>
                     </div>
                     <div class="card-body">
-                        <div class="row">                               
-                          <div class="form-group col-md-6 col-12">
-                            <label>First Name</label>
-                            <input type="text" class="form-control" value="Ujang" required="">
-                            <div class="invalid-feedback">
-                              Please fill in the first name
-                            </div>
-                          </div>
-                          <div class="form-group col-md-6 col-12">
-                            <label>Last Name</label>
-                            <input type="text" class="form-control" value="Maman" required="">
-                            <div class="invalid-feedback">
-                              Please fill in the last name
-                            </div>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="form-group col-md-7 col-12">
-                            <label>Email</label>
-                            <input type="email" class="form-control" value="{{$user->email}}" required="">
-                            <div class="invalid-feedback">
-                              Please fill in the email
-                            </div>
-                          </div>
-                          <div class="form-group col-md-5 col-12">
-                            <label>Phone</label>
-                            <input type="tel" class="form-control" value="">
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="form-group col-12">
-                            <label>Bio</label>
-                            <textarea class="form-control summernote-simple">Ujang maman is a superhero name in <b>Indonesia</b>, especially in my family. He is not a fictional character but an original hero in my family, a hero for his children and for his wife. So, I use the name as a user in this template. Not a tribute, I'm just bored with <b>'John Doe'</b>.</textarea>
-                          </div>
-                        </div>
-                        <div class="row">
-                          <div class="form-group mb-0 col-12">
-                            <div class="custom-control custom-checkbox">
-                              <input type="checkbox" name="remember" class="custom-control-input" id="newsletter">
-                              <label class="custom-control-label" for="newsletter">Subscribe to newsletter</label>
-                              <div class="text-muted form-text">
-                                You will get new information about products, offers and promotions
-                              </div>
-                            </div>
-                          </div>
+                        <div class="table-responsive">
+                          <table class="table">
+                            <tbody>
+                              <tr>
+                                <td>E-mail</td>
+                                <td>{{$userdetails->CL_EMAIL}}</td>
+                              </tr>
+                              <tr>
+                                <td>Утасны дугаар</td>
+                                <td>{{$userdetails->CL_MOBILE}}</td>
+                              </tr>
+                              <tr>
+                                <td>Нэвтрэх нэр</td>
+                                <td>{{$userdetails->CL_USERNAME}}</td>
+                              </tr>
+                              <tr>
+                                <td>Бүртгүүлсэн огноо</td>
+                                <td>{{$userdetails->CL_CREATED_DATE}}</td>
+                              </tr>
+                              <th colspan=2>KYC</th>
+                              <tr>
+                                <td>KYC зөвшөөрсөн эсэх</td>
+                                <td>@if($userdetails->legit->CL_IS_CONSENT_AGREED == true)
+                                    <button class="btn btn-success">Баталгаажсан</button>
+                                    @else
+                                    <button class="btn btn-danger">Баталгаажсан</button>
+                                    @endif
+                                </td>
+                              </tr>
+
+                             <tr>
+                                <td>РД-дугаар</td>
+                                <td>{{isset($userdetails->legit->CL_COUNTRY_REG) ? $userdetails->legit->CL_COUNTRY_REG : ""}}</td>
+                              </tr>
+                              <tr>
+                                <td>РД-дугаар</td>
+                                <td>{{isset($userdetails->legit->CL_FIRST_NAME) ? $userdetails->legit->CL_FIRST_NAME : ""}}</td>
+                              </tr>
+                              <tr>
+                                <td>РД-дугаар</td>
+                                <td>{{isset($userdetails->legit->CL_LAST_NAME) ? $userdetails->legit->CL_LAST_NAME : ""}}</td>
+                              </tr>
+                             
+                              
+                            </tbody>
+                          </table>
                         </div>
                     </div>
                     <div class="card-footer text-right">

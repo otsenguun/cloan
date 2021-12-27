@@ -39,18 +39,7 @@
                 {{$msj}}
             </div>
             @endif
-            <div class="form-group">
-                <label>Зээлэх дүн</label>
-                <div class="input-group">
-                    
-                    <input type="text" class="form-control phone-number" name="priority" step=any>
-                    <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        MNT ₮
-                    </div>
-                    </div>
-                </div>
-            </div>
+           
             <div class="form-group">
                 <label>Виртуал хөрөнгийн дүн</label>
                 <div class="input-group">
@@ -73,19 +62,19 @@
                         <label class="form-label">Зээлэх хувь /LTV/</label>
                         <div class="selectgroup w-100">
                         <label class="selectgroup-item">
-                            <input type="radio" name="value" value="50" class="selectgroup-input percent" checked="">
+                            <input type="radio" name="borrow_risk_name" value="RISK_20_MARGIN" class="selectgroup-input percent" checked="">
                             <span class="selectgroup-button">20%</span>
                         </label>
                         <label class="selectgroup-item">
-                            <input type="radio" name="value" value="100" class="selectgroup-input percent">
+                            <input type="radio" name="borrow_risk_name" value="RISK_30_MARGIN" class="selectgroup-input percent">
                             <span class="selectgroup-button">30%</span>
                         </label>
                         <label class="selectgroup-item">
-                            <input type="radio" name="value" value="150" class="selectgroup-input percent">
+                            <input type="radio" name="borrow_risk_name" value="RISK_40_MARGIN" class="selectgroup-input percent">
                             <span class="selectgroup-button">40%</span>
                         </label>
                         <label class="selectgroup-item">
-                            <input type="radio" name="value" value="200" class="selectgroup-input percent">
+                            <input type="radio" name="borrow_risk_name" value="RISK_50_MARGIN" class="selectgroup-input percent">
                             <span class="selectgroup-button">50%</span>
                         </label>
                         </div>
@@ -98,11 +87,11 @@
                             
                     
                             
-                            <select name="" id="" class="form-control">
-                                <option value="">7 хоног</option>
-                                <option value="">14 хоног</option>
-                                <option value="">21 хоног</option>
-                                <option value="">28 хоног</option>
+                            <select name="borrow_date_range" id="" class="form-control">
+                                <option value="7">7 хоног</option>
+                                <option value="14">14 хоног</option>
+                                <option value="21">21 хоног</option>
+                                <option value="28">28 хоног</option>
                             </select>
                         
                         </div>
@@ -115,7 +104,10 @@
                 <div class="col-md-12 result_div">
                 <div class="table-responsive">
                     <table class="table table-striped table-hover table-md">
-            
+                    <tr>
+                        <td>Төлөх дүн</td>
+                        <td align="right" id="calculate_price_refund">-</td>
+                    </tr>
                     <tr>
                         <td>Зээлийн дүн</td>
                         <td align="right" id="calculate_price">-</td>

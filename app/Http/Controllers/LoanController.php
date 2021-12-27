@@ -25,12 +25,16 @@ class LoanController extends Controller
         $body = [];
         $body["crypto_sname"] =  $request->crypto_sname;
         $body["amount"] =  $request->amount;
-        $body["priority"] =  $request->priority;
+        $body["borrow_risk_name"] =  $request->borrow_risk_name;
+        $body["priority"] =  99;
+        $body["borrow_date_range"] =  $request->borrow_date_range;
+        
+        // dd($body);
 
         $back = AppHelper::ToCurl("/useroper/orderBorrowCalculate","post",$body);
         $response = json_decode($back['body']);
         $code = $back["http_code"];
-
+        // dd($response);
         if($code == "200" && $response->success == true){
             $msj = "Амжилттай илгээгдлэ";
         }else{
@@ -40,8 +44,6 @@ class LoanController extends Controller
         $back2 = AppHelper::ToCurl("/geninfo/crypto","get",$body2);
         $coins = json_decode($back2['body']);
         $code = $back["http_code"];
-
-        
         
         return json_encode($response);
         // return view("admin.loan.create",compact("msj",'coins'));

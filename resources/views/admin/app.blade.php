@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
   <title>CoinLend</title>
-
+  <link rel="icon" type="image/x-icon" href="{{asset('images/dan_logo.png')}}" />
   <!-- General CSS Files -->
   <link rel="stylesheet" href="{{asset('custom/modules/bootstrap/css/bootstrap.min.css')}}">
   <link rel="stylesheet" href="{{asset('custom/modules/fontawesome/css/all.min.css')}}">
@@ -178,9 +178,10 @@
                     $("#borrowcancel").removeClass("hidden");
 
 
-                    $("#calculate_price").html(result.order_borrow.CL_CONVERTED_FLAT_AMOUNT + " " + result.order_borrow.CL_CONVERTED_FLAT_CURRENCY);
+                    $("#calculate_price").html(result.order_borrow.CL_FLAT_AMOUNT + " " + result.order_borrow.CL_FLAT_CURRENCY);
+                    $("#calculate_price_refund").html(result.order_borrow.CL_FLAT_EXPECTED_RETURN_AMOUNT + " " + result.order_borrow.CL_FLAT_CURRENCY);
                     $("#calculate_precent").html("3%");
-                    $("#calculate_crypto").html(result.order_borrow.CL_CRYPTO_AMOUNT);
+                    $("#calculate_crypto").html(result.order_borrow.CL_CRYPTO_AMOUNT + " " + result.order_borrow.CL_CRYPTO_SNAME);
                     $("#borrowconfirm").attr("href","{{url('orderBorrowConfirm')}}" + "/" + result.order_borrow.id);
                     $("#borrowcancel").attr("href","{{url('orderBorrowCancel')}}" + "/" + result.order_borrow.id);
                     let clone_div = $(".result_div");
@@ -260,14 +261,19 @@
         //   e.preventDefault();
 
         // });
-        var elems = document.getElementsByClassName('cancel');
-        var confirmIt = function (e) {
-            if (!confirm('Are you sure?')) e.preventDefault();
-        };
-        for (var i = 0, l = elems.length; i < l; i++) {
-            elems[i].addEventListener('click', confirmIt, false);
+        function formatPera(num) {
+            var p = parseFloat(num).toFixed(2).split(".");
+            return p[0].split("").reverse().reduce(function(acc, num, i, orig) {
+                return  num + (i && !(i % 3) ? "," : "") + acc;
+            }, "") + "." + p[1];
         }
 
+        // $("input[sync='number']").keyup(function(){
+        //   // $(this).val(addCommas( $(this).val()));
+        //   // let num = formatPera($(this).val());
+        //   // console.log(num);
+        //   // $(this).val(num);
+        // });
 
       
       // $(document).on("click",".render",function(e) {

@@ -22,11 +22,7 @@ class MasterController extends Controller
         
         $users = json_decode($response["body"]);
 
-        // dd($users);
-
         return view("admin.master.users",compact("users","request"));
-
-
 
     }
 
@@ -50,8 +46,14 @@ class MasterController extends Controller
         $user_images = [
             $user_info,$user_info2,$user_info3
         ];
+
+        $body_details["userid"] = $user_index[0];
+        $body_details["index"] = 1;
+        $response_details = AppHelper::ToCurl("/admin/userdetailInfo","post",$body_details);
+        $user_info4 = $response_details["body"];
+        $user_detail = json_decode($user_info4);
         
-        // print_r($user_images);
+        $userdetails = ($user_detail->userlist->pagelist[0]);
 
         $user = new \stdClass;
         $user->id = $id;;
@@ -60,19 +62,26 @@ class MasterController extends Controller
         }else{
             $re_aprove = "true";
         }
-        // dd($user_images);
+
         $msj = "";
 
-        return view("admin.master.user_confirm",compact("user_images","re_aprove","user","msj"));
+        return view("admin.master.user_confirm",compact("user_images","re_aprove","user","msj","userdetails"));
+
     }
     public function approve(Request $request){
      
         $body["userid"] = $request->id;
-        $body["approve"] = $request->approve;
+        if($request->approve == 1){
+            $body["approve"] = "true";
+        }else{
+            $body["approve"] = false;
+        }
         $body["reason"] = $request->reason;
+
         $response = AppHelper::ToCurl("/admin/approveUser","post",$body);
-        
+
         $user_info = json_decode($response["body"]);
+
         if($request->approve == "true"){
             $re_aprove = "true";
             $msj = "Амжилттай баталгаажлаа";
@@ -94,24 +103,30 @@ class MasterController extends Controller
         $body["index"] = 2;
         $response3 = AppHelper::ToCurl("/admin/userdetail","post",$body);
 
-        
         $user_info = $response1["body"];
         $user_info2 = $response2["body"];
         $user_info3 = $response3["body"];
         $user_images = [
             $user_info,$user_info2,$user_info3
         ];
-        // dd($response);
+        $body_details = [];
+        $body_details["userid"] = $request->id;
+        $body_details["index"] = 1;
 
-        return view("admin.master.user_confirm",compact("user_images","re_aprove","user","msj"));
+        $response_details = AppHelper::ToCurl("/admin/userdetailInfo","post",$body_details);
+
+        $user_info4 = $response_details["body"];
+        $user_detail = json_decode($user_info4);
+
+        $userdetails = ($user_detail->userlist->pagelist[0]);
+
+        return view("admin.master.user_confirm",compact("user_images","re_aprove","user","msj","userdetails"));
     }
     public function total_orders(Request $request){
 
         $body = [];
-        // $body["pagenumber"] = 1;
-        // $body["pagesize"] = 25;
+        
         $response = AppHelper::ToCurl("/user/orderBorrowList","get",$body);
-        dd($response);
 
         return view("admin.master.orders");
     }

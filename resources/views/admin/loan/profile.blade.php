@@ -8,7 +8,7 @@
         <section class="section">
 <div class="section-header">
 
-            <h1>Хэрэглэгчид</h1>
+            <h1>Хэтэвчний үлдэгдэл</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
               <div class="breadcrumb-item">Хэрэглэгч</div>
@@ -31,25 +31,29 @@
                                     @if($user->userlegit->CL_KYC_ISAPPROVED == 1)
                                         <span class="btn btn-success">Зөвшөөрсөн</span>
                                     @else
-                                        <span class="btn btn-waring">Зөвшөөрөөгүй</span>
+                                        <span class="btn btn-danger">Зөвшөөрөөгүй</span>
                                     @endif
                                   </td>
                                 </tr>
+                            
                                 <tr>
                                   <td>Шалтгаан</td>
-                                  <td>{{$user->userlegit->CL_KYC_REASON}}</td>
+                                  <td>{{isset($user->userlegit->CL_KYC_REASON) ? $user->userlegit->CL_KYC_REASON : ""}}</td>
                                 </tr>
                                 <tr>
                                   <td>Нэр</td>
-                                  <td>{{$user->userlegit->CL_FIRST_NAME}}</td>
+                                  <td>{{isset($user->userlegit->CL_FIRST_NAME) ? $user->userlegit->CL_FIRST_NAME : ""}}</td>
+                                
                                 </tr>
                                 <tr>
                                   <td>Овог</td>
-                                  <td>{{$user->userlegit->CL_LAST_NAME}}</td>
+                                  <td>{{isset($user->userlegit->CL_LAST_NAME) ? $user->userlegit->CL_LAST_NAME : ""}}</td>
+                                
                                 </tr>
                                 <tr>
                                   <td>Регистер</td>
-                                  <td>{{$user->userlegit->CL_COUNTRY_REG}}</td>
+                                  <td>{{isset($user->userlegit->CL_COUNTRY_REG) ? $user->userlegit->CL_COUNTRY_REG : ""}}</td>
+                                
                                 </tr>
                                 <tr>
                                   <td>Username</td>

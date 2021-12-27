@@ -27,7 +27,7 @@
 
 
         <div class="section-body card-custom">
-        <h2 class="section-title">Зээл</h2>
+        <h2 class="section-title">Зээлдүүлэх</h2>
         <!-- <p class="section-lead">We provide advanced input fields, such as date picker, color picker, and so on.</p> -->
         <form action="{{url('calculateLoaner')}}" method="get" class="calculateLoaner">
         <div class="row">
@@ -41,7 +41,7 @@
                     <label>Зээлдүүлэх дүн</label>
                     <div class="input-group">
                         <input type="hidden" class="form-control phone-number" name="currency" value="MNT" >
-                        <input type="number" class="form-control phone-number" name="amount" id="lend_input">
+                        <input type="number" sync="number" class="form-control phone-number" name="amount" id="lend_input">
                         <div class="input-group-prepend">
                         <div class="input-group-text">
                             MNT ₮

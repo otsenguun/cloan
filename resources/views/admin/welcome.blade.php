@@ -18,6 +18,12 @@
         <link href="{{asset('frontend/css/styles.css')}}" rel="stylesheet" />
 
         <style>
+            body{
+                font-family: 'Roboto', sans-serif !important;
+            }
+            h6, .h6, h5, .h5, h4, .h4, h3, .h3, h2, .h2, h1, .h1 {
+                font-family: 'Roboto', sans-serif !important;
+            }
             .bg-gradient-primary-to-secondary{
                 background: linear-gradient(45deg, #4780b8, #74b9b3) !important;
             }
@@ -57,7 +63,7 @@
                         <li class="nav-item"><a class="nav-link me-lg-3" href="{{url('/login')}}">Нэвтрэх</a></li>
                   
 
-                        <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Апп татах</a></li>
+                        <!-- <li class="nav-item"><a class="nav-link me-lg-3" href="#download">Апп татах</a></li> -->
                     </ul>
                     <button class="btn btn-primary rounded-pill px-3 mb-2 mb-lg-0" data-bs-toggle="modal" data-bs-target="#feedbackModal">
                         <span class="d-flex align-items-center">
@@ -120,7 +126,9 @@
                 <div class="row gx-5 justify-content-center">
                     <div class="col-xl-8">
                         <div class="h2 fs-1 text-white mb-4">"Та виртуал хөрөнгөө барьцаалж зээл авах болон хөрөнгө оруулах боломжтой боллоо"</div>
-                        <img src="{{asset('images/coinlend_logo.png')}}" alt="..." style="height: 5rem" />
+                        <div class="col-md-12 text-center">  <img src="{{asset('images/coinlend_logo.png')}}" alt="..." style="width: 100%" /></div>
+                      
+
                     </div>
                 </div>
             </div>

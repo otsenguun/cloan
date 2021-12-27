@@ -15,7 +15,7 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="text" value="Нэвтрэх нэр" />
+                <x-jet-label for="text" value="И-мейл хаяг" />
                 <x-jet-input id="text" class="block mt-1 w-full" type="text" name="username" :value="old('text')" required />
             </div>
 
@@ -31,13 +31,14 @@
 
             <div class="mt-4">
                 <x-jet-label for="password" value="Нууц үг" />
-                <x-jet-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+                <x-jet-input pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" id="password" class="block mt-1 w-full" type="password" name="password" required/>
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="password_confirmation" value="Нууц үг давт" />
-                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
+                <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
             </div>
+         
 
             <div class="flex items-center justify-end mt-4">
                 <a class="underline text-sm text-gray-600 hover:text-gray-900" href="{{ route('login') }}">
