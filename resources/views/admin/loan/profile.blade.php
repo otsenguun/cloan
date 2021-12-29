@@ -3,12 +3,18 @@
 
 @section('content')
   <!-- Main Content -->
+
+  <style>
+    .custom_card{
+      border:solid 1px;
+    }
+  </style>
 <div class="main-content">
 
         <section class="section">
 <div class="section-header">
 
-            <h1>Хэтэвчний үлдэгдэл</h1>
+            <h1>Хэтэвч</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Dashboard</a></div>
               <div class="breadcrumb-item">Хэрэглэгч</div>
@@ -31,7 +37,7 @@
                                     @if($user->userlegit->CL_KYC_ISAPPROVED == 1)
                                         <span class="btn btn-success">Зөвшөөрсөн</span>
                                     @else
-                                        <span class="btn btn-danger">Зөвшөөрөөгүй</span>
+                                        <a href="{{url('user_details')}}"><span class="btn btn-danger">Зөвшөөрөөгүй</span></a> 
                                     @endif
                                   </td>
                                 </tr>
@@ -74,35 +80,40 @@
                   <div class="card-body">
                   <div class="row">
                     @foreach($user->user_cryptos as $key => $crypto)
-                      <div class="col-md-2">
-                        <div class="card text-white bg-primary">
-                          <div class="card-header">
-                          {{$crypto->CL_CRYPTO_SNAME}}
-                          </div>
+                      <div class="col-lg-3 order-lg-1 mb-5 mb-lg-0">
+                        <div class="card border-info mb-3 custom_card">
+                         
                           <div class="card-body">
-                            <table class="table">
-                              <tbody>
-                                <tr>
-                                  <td>Cryoto</td>
-                                  <td>{{$crypto->CL_CRYPTO_NAME}}</td>
-                                </tr>
-                                <tr>
-                                  <td>Amount</td>
-                                  <td>{{$crypto->CL_AMOUNT_FULL}}</td>
-                                </tr>
-                                <tr>
-                                  <td>Locked name</td>
-                                  <td>{{$crypto->CL_AMOUNT_LOCKED}}</td>
-                                </tr>
-                                <tr>
-                                  <td colspan=2>
-                                  <button class="btn btn-sm btn-info inc_button" coin="{{$crypto->CL_CRYPTO_NAME}}" c_address="{{$crypto->CL_PUB_ADDRESS}}">Орлого</button>
+                             <div class="text-center">
+                               <h3>{{$crypto->CL_CRYPTO_SNAME}}</h3>
+                             </div>
+                             <hr>
+                            <div class="row">
+                              <div class="col-md-6">
+                              <b>Крипто</b>
+                              </div>
+                              <div class="col-md-6">
+                              {{$crypto->CL_CRYPTO_NAME}}
+                              </div>
+                              <div class="col-md-6">
+                              <b>Дүн</b>
+                              </div>
+                              <div class="col-md-6">
+                              {{$crypto->CL_AMOUNT_FULL}}
+                              </div>
+                              <div class="col-md-6">
+                              <b>Түгжигдсэн</b>
+                              </div>
+                              <div class="col-md-6">
+                              {{$crypto->CL_AMOUNT_LOCKED}}
+                              </div>
+                              <div class="col-md-12 text-center">
+                                <hr>
+                              <button class="btn btn-sm btn-info inc_button" coin="{{$crypto->CL_CRYPTO_NAME}}" c_address="{{$crypto->CL_PUB_ADDRESS}}">Орлого</button>
                                   <button class="btn btn-sm btn-primary inc_button">Зарлага</button>
-
-                                  </td>
-                                </tr> 
-                              </tbody>
-                            </table>
+                              </div>
+                            </div>
+                   
                           </div>
                         </div>
                       </div>
@@ -121,30 +132,30 @@
                   <div class="card-body">
                     <div class="row">
                     @foreach($user->user_flats as $key => $vallet)
-                      <div class="col-md-2">
-                        <div class="card text-white bg-info">
-                          <div class="card-header">
-                          {{$vallet->CL_CURRENCY}}
-                          </div>
+                    <div class="col-lg-3 order-lg-1 mb-5 mb-lg-0">
+                        <div class="card border-info mb-3 custom_card">
+                    
                           <div class="card-body">
-                            <table class="table">
-                              <tbody>
-                                <tr>
-                                  <td>Amount</td>
-                                  <td>{{$vallet->CL_AMOUNT}}</td>
-                                </tr>
-                                <tr>
-                                  <td>Утга</td>
-                                  <td>{{$vallet->CL_DEPOSIT_WORD}}</td>
-                                <tr>
-                                  <td colspan=2>
-                                  <button class="btn btn-sm btn-info">Орлого</button>
+                          <div class="text-center">
+                               <h3>{{$vallet->CL_CURRENCY}}</h3>
+                             </div>
+                             <hr>
+                            <div class="row">
+                              <div class="col-md-6">
+                              {{$vallet->CL_AMOUNT}}
+                              </div>
+                              <div class="col-md-6">
+                              <b>Утга</b>
+                              </div>
+                              <div class="col-md-6">
+                              {{$vallet->CL_DEPOSIT_WORD}}
+                              </div>
+                              <div class="col-md-12 text-center">
+                                <hr>
+                                <button class="btn btn-sm btn-info">Орлого</button>
                                   <button class="btn btn-sm btn-primary">Зарлага</button>
-
-                                  </td>
-                                </tr> 
-                              </tbody>
-                            </table>
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>

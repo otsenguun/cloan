@@ -24,25 +24,25 @@
             </div>
             <div class="card-body">
                 @if($msj != "")
-                <div class="alert alert-primary">
+                <div class="alert alert-warning">
                     {{$msj}}
                     </div>
                 @endif
                 <form action="{{url('changePassword')}}" method="post" class="forme">
                 <div class="form-group">
                     <label>Хуучин нууц үг</label>
-                        <input type="password" class="form-control phone-number" name="password_old" step=any>
+                        <input type="password" class="form-control phone-number" name="password_old" step=any autocomplete="false">
                 </div>
                 <div class="form-group">
                     <label>Шинэ нууц үг</label>
-                        <input type="password" class="form-control phone-number" name="password_new" step=any>
+                        <input type="password" class="form-control phone-number" name="password_new" step=any autocomplete="false">
                 </div>
                 <div class="form-group">
                     <label>Шинэ нууц үг давт</label>
-                        <input type="password" class="form-control phone-number" name="password_new_repeat" step=any>
+                        <input type="password" class="form-control phone-number" name="password_new_repeat" step=any autocomplete="false">
                 </div>
-                <div>
-                    <input type="submit" class="btn btn-sm btn-primary">
+                <div class="text-center">
+                    <input type="submit" class="btn btn-lg btn-primary" value="Солих">
                 </div>
 
                 </form>

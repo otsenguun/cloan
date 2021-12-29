@@ -64,17 +64,17 @@
                   <div class="row">
                     <div class="form-group col-md-6">
                       <label for="frist_name">Овог</label>
-                      <input id="frist_name" type="text" class="form-control" name="firstname" autofocus value= "{{isset($response->userlegit->CL_FIRST_NAME) ? $response->userlegit->CL_FIRST_NAME : '' }}" >
+                      <input id="frist_name" type="text" class="form-control" required name="firstname" autofocus value= "{{isset($response->userlegit->CL_FIRST_NAME) ? $response->userlegit->CL_FIRST_NAME : '' }}" >
                     </div>
                     <div class="form-group col-md-6">
                       <label for="last_name">Нэр</label>
-                      <input id="last_name" type="text" class="form-control" name="lastname" value= "{{isset($response->userlegit->CL_LAST_NAME) ? $response->userlegit->CL_LAST_NAME : '' }}">
+                      <input id="last_name" type="text" class="form-control" required name="lastname" value= "{{isset($response->userlegit->CL_LAST_NAME) ? $response->userlegit->CL_LAST_NAME : '' }}">
                     </div>
                   </div>
 
                   <div class="form-group">
                     <label for="text">Регистер/Д</label>
-                    <input id="text" type="text" class="form-control" name="country_reg_id" value= "{{isset($response->userlegit->CL_COUNTRY_REG) ? $response->userlegit->CL_COUNTRY_REG : '' }}" >
+                    <input id="text" type="text" class="form-control" required name="country_reg_id" value= "{{isset($response->userlegit->CL_COUNTRY_REG) ? $response->userlegit->CL_COUNTRY_REG : '' }}" >
                     <div class="invalid-feedback">
                     </div>
                   </div>
@@ -87,7 +87,7 @@
                          <center>
                          <label>Иргэний үнэмлэх / урд тал</label>
                          <br>
-                         @if(isset($user_images["f_img"]))
+                         @if($user_images["f_img"]  != "")
                           <img src="data:image/png;base64,<?php echo base64_encode($user_images["f_img"]);?>" alt="Base 64 encoded!" style="width:100%"/>
                           @else
                           <i class="fas fa-id-card def text-center"></i>
@@ -97,27 +97,26 @@
                            
                         
                      
-                      <input type="file" class="form-control" name="reg_1">
+                      <input type="file" class="form-control" name="reg_1" @if($user_images["f_img"] == "") required @endif >
                     </div>
                     <div class="form-group col-md-4">
 
                           <center>
                           <label>Иргэний үнэмлэх / ард тал</label>
                                 <br>
-                                @if(isset($user_images["b_img"]))
+                                @if($user_images["b_img"]  != "")
                                   <img src="data:image/png;base64,<?php echo base64_encode($user_images["b_img"]);?>" alt="Base 64 encoded!" style="width:100%"/>
                                   @else
                                   <i class="fas fa-credit-card def"></i>
                                 @endif
                           </center>
-                           
-                     
-                      <input type="file" class="form-control" name="reg_2">
+                      
+                      <input type="file" class="form-control" name="reg_2"  @if($user_images["b_img"]  == "" ) required @endif >
                     </div>
                     <div class="form-group col-md-4">
                           <center>
                           <label>Үнэмлэхээ барьсан зураг</label>
-                          @if(isset($user_images["s_img"]))
+                          @if($user_images["s_img"]  != "")
                             <img src="data:image/png;base64,<?php echo base64_encode($user_images["s_img"]);?>" alt="Base 64 encoded!" style="width:100%"/>
                             @else
                             <i class="fas fa-portrait def"></i>
@@ -125,7 +124,7 @@
                           </center>
                     <!-- <i class="fas fa-portrait"></i> -->
                     
-                     <input type="file" class="form-control" name="reg_3">
+                     <input type="file" class="form-control" name="reg_3" @if($user_images["s_img"]  == "") required @endif >
                     </div>
 
                   </div>
@@ -184,28 +183,28 @@
     <span>
         1.1 &nbsp; Энэхүү үйлчилгээний нөхцөлийг нэг талаас Зээлдэгч, Зээлдүүлэгч хамтад нь &ldquo;Харилцагч&rdquo; нөгөө талаас виртуал хөрөнгийн үйлчилгээ үзүүлэгч цаашид &ldquo;Койнлэнд ХХК&rdquo; гэнэ. Хамтад нь талууд гэж
         нэрлэнэ.Талуудын харилцааг энэхүү үйлчилгээний нөхцөлөөр зохицуулна.
-    </span>
+    </span><br>
     <span>1.2 &nbsp; Coinlend.mn нь Peer 2 Peer буюу харилцагч хооронд дундын зуучлалгүйгээр хоорондоо зээл өгөх, авах процессыг олгосон цахим платформ юм.&nbsp;</span>
-    <span>1.3 &nbsp; Зээлдэгч гэж &ldquo;Койнлэнд ХХК&rdquo; апплакейшнд бүртгүүлж баталгаажсан зээлдэгчээр бүртгүүлсэн иргэн, хуулийн этгээдийг хэлнэ.&nbsp;</span>
-    <span>1.4 &nbsp; Зээлдүүлэгч гэж &ldquo;Койнлэнд ХХК&rdquo; апплакейшнд бүртгүүлж баталгаажсан зээлдүүлэгчээр бүртгүүлсэн иргэн, хуулийн этгээдийг хэлнэ.&nbsp;</span>
-    <span>ХОЁР: ХАРИЛЦАГЧДЫН ЭРХ ҮҮРЭГ</span>
-    <span>1.1 &nbsp; Харилцагч нь энэхүү үйлчилгээний нөхцөлийг хатуу баримтлах бөгөөд энэхүү үйлчилгээний нөхцөлийг хүлээн зөвшөөрсөн тохиолдолд coinlend.mn апплакейшний үйлчилгээг авах эрхтэй болно.</span>
-    <span>1.2 &nbsp; Харилцагч нь хувийн мэдээлэл &ldquo;Койнлэнд&rdquo; ХХК-ийг дагуу мэдээлж бүртгэл баталгаажсан үед үйлчилгээ авах боломжтой болно.</span>
-    <span>1.3 &nbsp; Харилцагч нь аливаа хууль бус үйл ажиллагаа хийхгүй бөгөөд үйлдэл болгон нь бүртгэгдэж байна.</span>
-    <span>1.4 &nbsp; Харилцагч энэхүү гэрээний 4.1 заасан шимтгэл төлөх үүрэгтэй.</span>
-    <span>1.5 &nbsp; Харилцагч энэхүү гэрээний 4.2 заасан хүүг төлөх үүрэгтэй хэрэв хүүг төлөхөөс таталцвал барьцаа хөрөнгө болох виртуал хөрөнгийг хурааж зээлдэгчийг хохиролгүй болгоно.</span><br />
-    <span>ГУРАВ: ВИРТУАЛ ҮЙЛЧИЛГЭЭ ҮЗҮҮЛЭГЧИЙН ЭРХ ҮҮРЭГ</span><br />
-    <span>3.1 &ldquo;Койнлэнд&rdquo; ХХК нь харилцагчдад найдвартай тогтвортой виртуал хөрөнгийг барьцаалах боломжийг олгоно.&nbsp;</span><br />
-    <span>3.2 &ldquo;Койнлэнд &ldquo;ХХК нь харилцагчдын виртуал хөрөнгийг хадгалах, зарцуулахад нь зөвлөгөө өгөх үүрэгтэй.</span><br />
-    <span>3.3 &ldquo;Койнлэнд&rdquo; ХХК нь харилцагчид санхүүгийн үйлчилгээнээс учрах эрсдэлийг анхааруулсан байна.</span><br />
-    <span>ДӨРӨВ: ҮЙЛЧИЛГЭЭ ҮЗҮҮЛЭГЧИЙН ШИМТГЭЛ, ТӨЛБӨР ТООЦОО</span><br />
-    <span>4.1 &nbsp; Харилцагч нь &ldquo;Койнлэнд&rdquo; ХХК-д орлого хийхэд ямар нэгэн шимтгэл байхгүй бөгөөд зарлага болгонд 1%-ийн шимтгэл төлнө.</span>
-    <span>4.2 &nbsp; Зээлдэгч нь мөнгөн хөрөнгө зээлж авсны төлөө хүү төлөх бөгөөд хүүг &ldquo;Койнлэнд&rdquo; ХХК тогтооно.</span>
-    <span>4.3 &nbsp; Зээлдэгч нь мөнгөн хөрөнгийг тодорхой хугацаатай зээлэх бөгөөд зээлийн хугацаа хэтэрсэн тохиолдолд барьцаа хөрөнгө болох в</span>
-    <span>4.4 &nbsp; Харилцагч нь мөнгөн хөрөнгөөр зээлдэгчид зээл өгөх ба зээлийн хүүний 80%-ийг зээлдүүлэгч өөрөө авна.</span><br />
-    <span>ТАВ:ХАРИУЦЛАГА</span><br />
-    <span>5.1 Талууд энэхүү гэрээний нөхцөлийг зөрчвөл хариуцлага хүлээнэ.</span><br />
-    <span>ЗУРГАА: МАРГААН ШИЙДВЭРЛЭХ</span><br />
+    <br><span>1.3 &nbsp; Зээлдэгч гэж &ldquo;Койнлэнд ХХК&rdquo; апплакейшнд бүртгүүлж баталгаажсан зээлдэгчээр бүртгүүлсэн иргэн, хуулийн этгээдийг хэлнэ.&nbsp;</span>
+    <br><span>1.4 &nbsp; Зээлдүүлэгч гэж &ldquo;Койнлэнд ХХК&rdquo; апплакейшнд бүртгүүлж баталгаажсан зээлдүүлэгчээр бүртгүүлсэн иргэн, хуулийн этгээдийг хэлнэ.&nbsp;</span>
+    <br><span>ХОЁР: ХАРИЛЦАГЧДЫН ЭРХ ҮҮРЭГ</span>
+    <br><span>1.1 &nbsp; Харилцагч нь энэхүү үйлчилгээний нөхцөлийг хатуу баримтлах бөгөөд энэхүү үйлчилгээний нөхцөлийг хүлээн зөвшөөрсөн тохиолдолд coinlend.mn апплакейшний үйлчилгээг авах эрхтэй болно.</span>
+    <br><span>1.2 &nbsp; Харилцагч нь хувийн мэдээлэл &ldquo;Койнлэнд&rdquo; ХХК-ийг дагуу мэдээлж бүртгэл баталгаажсан үед үйлчилгээ авах боломжтой болно.</span>
+    <br><span>1.3 &nbsp; Харилцагч нь аливаа хууль бус үйл ажиллагаа хийхгүй бөгөөд үйлдэл болгон нь бүртгэгдэж байна.</span>
+    <br><span>1.4 &nbsp; Харилцагч энэхүү гэрээний 4.1 заасан шимтгэл төлөх үүрэгтэй.</span>
+    <br><span>1.5 &nbsp; Харилцагч энэхүү гэрээний 4.2 заасан хүүг төлөх үүрэгтэй хэрэв хүүг төлөхөөс таталцвал барьцаа хөрөнгө болох виртуал хөрөнгийг хурааж зээлдэгчийг хохиролгүй болгоно.</span><br />
+    <br><span>ГУРАВ: ВИРТУАЛ ҮЙЛЧИЛГЭЭ ҮЗҮҮЛЭГЧИЙН ЭРХ ҮҮРЭГ</span>
+    <br><span>3.1 &ldquo;Койнлэнд&rdquo; ХХК нь харилцагчдад найдвартай тогтвортой виртуал хөрөнгийг барьцаалах боломжийг олгоно.&nbsp;</span>
+    <br><span>3.2 &ldquo;Койнлэнд &ldquo;ХХК нь харилцагчдын виртуал хөрөнгийг хадгалах, зарцуулахад нь зөвлөгөө өгөх үүрэгтэй.</span>
+    <br><span>3.3 &ldquo;Койнлэнд&rdquo; ХХК нь харилцагчид санхүүгийн үйлчилгээнээс учрах эрсдэлийг анхааруулсан байна.</span>
+    <br><span>ДӨРӨВ: ҮЙЛЧИЛГЭЭ ҮЗҮҮЛЭГЧИЙН ШИМТГЭЛ, ТӨЛБӨР ТООЦОО</span>
+    <br><span>4.1 &nbsp; Харилцагч нь &ldquo;Койнлэнд&rdquo; ХХК-д орлого хийхэд ямар нэгэн шимтгэл байхгүй бөгөөд зарлага болгонд 1%-ийн шимтгэл төлнө.</span>
+    <br><span>4.2 &nbsp; Зээлдэгч нь мөнгөн хөрөнгө зээлж авсны төлөө хүү төлөх бөгөөд хүүг &ldquo;Койнлэнд&rdquo; ХХК тогтооно.</span>
+    <br><span>4.3 &nbsp; Зээлдэгч нь мөнгөн хөрөнгийг тодорхой хугацаатай зээлэх бөгөөд зээлийн хугацаа хэтэрсэн тохиолдолд барьцаа хөрөнгө болох в</span>
+    <br><span>4.4 &nbsp; Харилцагч нь мөнгөн хөрөнгөөр зээлдэгчид зээл өгөх ба зээлийн хүүний 80%-ийг зээлдүүлэгч өөрөө авна.</span>
+    <br><span>ТАВ:ХАРИУЦЛАГА</span>
+    <br><span>5.1 Талууд энэхүү гэрээний нөхцөлийг зөрчвөл хариуцлага хүлээнэ.</span>
+    <br><span>ЗУРГАА: МАРГААН ШИЙДВЭРЛЭХ</span>
     <span>
         6.1 Аливаа үл ойлголцол гарсан тохиолдолд эхлээд &ldquo;Койнлэнд&rdquo;ХХК-д хандана уу. &ldquo;Койнлэнд&rdquo;ХХК таны асуудлыг 30 хоногийн дотор судалж, зохих хариу өгнө. &ldquo;Койнлэнд&rdquo;ХХК-аас Таны асуудлыг судлаад өгсөн
         хариу болон авсан арга хэмжээнд Та сэтгэл хангалуун бус байгаа тохиолдолд Монгол Улсын Олон Улсын Арбитрт хандаж маргааныг шийдвэрлүүлэх боломжтой. Таны болон &ldquo;Койнлэнд&rdquo;ХХК-аас ирүүлсэн, харилцан солилцсон и-мэйл болон

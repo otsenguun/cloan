@@ -53,7 +53,7 @@ class UserController extends Controller
 
         // dd($back);
         if($code == 201 && $response->msg == "User Created successfully"){
-            $exec = "Амжилттай Бүртгэгдлээ нэвтэр нүү";
+            $exec = "Амжилттай Бүртгэгдлээ нэвтэрнэ үү";
             return view('auth.login',compact("exec"));
         }elseif($code == 409){
             $exec = "Бүртгэлтэй байна";
@@ -197,6 +197,7 @@ class UserController extends Controller
     public function changePassword(Request $request){
 
         $body = [];
+        $msj = "";
         $body["password_old"] =  $request->password_old;
         $body["password_new"] =  $request->password_new;
         $body["password_new_repeat"] =  $request->password_new_repeat;
@@ -204,7 +205,18 @@ class UserController extends Controller
         $back = AppHelper::ToCurl("/geninfo/changePassword","post",$body);
         $response = json_decode($back['body']);
         $code = $back["http_code"];
-        dd($body);
+        // dd($response);
+        if( !isset($response->success) ){
+            $msj = "Амжилттай солигдлоо";
+        }else{
+            if($response->msg == "Old password is incorrect"){
+                $msj = "Өмнөх нууц үг буруу байна";
+            }else{
+                $msj = "Нууц үг хамгийн багадаа 8 оронтой 1 том үсэг, 1 жижиг үсэг, тоо, 1 тусгай тэмдэгт байна. Зай, мөр шилжиж болохгүй!";
+            }
+            
+        }
+        // dd($response);
 
         return view('admin.loan.change_password',compact("msj"));
 

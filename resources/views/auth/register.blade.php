@@ -21,10 +21,11 @@
                 <li>  4.     Виртуал хөрөнгө нь хууль ёсны мөнгөн тэмдэгтэд хамаарахгүй  Төв банк, Засгийн газраас баталгаажаагүй, виртуал хөрөнгө нь хадгаламжийн даатгал, үнэт цаасны хөрөнгө оруулагчдыг хамгаалах аливаа даатгалд хамаардаггүй хөрөнгө юм.
             </li>
                         </ul>
+                        <br>
             </div>
             <div>
                 <x-jet-label for="name" value="Утасны дугаар" />
-                <x-jet-input id="name" class="block mt-1 w-full" type="text" name="mobilenumber" :value="old('name')" required autofocus autocomplete="name" />
+                <x-jet-input id="name" class="block mt-1 w-full" minlength="8" maxlength="8" type="text" name="mobilenumber" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
             <div class="mt-4">

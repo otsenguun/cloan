@@ -148,9 +148,9 @@
               <a href="{{url('dans')}}" class="dropdown-item has-icon">
                 <i class="fas fa-bolt"></i> Данс
               </a>
-              <a href="{{url('user_details')}}" class="dropdown-item has-icon">
+              <!-- <a href="{{url('user_details')}}" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> KYC 
-              </a>
+              </a> -->
               <a href="{{url('changePassword')}}" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> Нууц үг солих 
               </a>

@@ -128,10 +128,10 @@
                         <td>Хүү</td>
                         <td align="right" id="calculate_precent">-</td>
                     </tr>
-                    <tr>
+                    <!-- <tr>
                         <td>Шимтгэл</td>
                         <td align="right">50₮</td>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td>Виртуал</td>
                         <td align="right" id="calculate_crypto">0</td>

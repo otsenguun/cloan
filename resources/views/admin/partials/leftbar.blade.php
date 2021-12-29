@@ -17,20 +17,20 @@ $user_roles = App\Helpers\AppHelper::getRole()
             <!-- user -->
             @if(in_array("cl-genuser",$user_roles))
             <li class="dropdown">
-              <a href="{{url('/home')}}" class="nav-link"><i class="fas fa-fire"></i><span>Нүүр</span></a>
+              <a href="{{url('/home')}}" class="nav-link"><i class="fas fa-home"></i><span>Нүүр</span></a>
             </li>
 
             <li class="menu-header">Үйлдэл</li>
             <li class="dropdown">
-              <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Хэтэвч</span></a>
-              <ul class="dropdown-menu">
+              <a href="{{url('me')}}" class="nav-link"><i class="fas fa-wallet"></i><span>Хэтэвч</span></a>
+              <!-- <ul class="dropdown-menu">
                 <li><a class="nav-link render" href="{{url('me')}}" urls="{{url('wallet')}}">Үлдэгдэл</a></li>
-                <!-- <li><a class="nav-link" href="index.html">Хуулга</a></li>
-                <li><a class="nav-link" href="index.html">Орлого/Зарлага</a></li> -->
-              </ul>
+                <li><a class="nav-link" href="index.html">Хуулга</a></li>
+                <li><a class="nav-link" href="index.html">Орлого/Зарлага</a></li>
+              </ul> -->
             </li>
             <li class="dropdown">
-              <a href="{{url('order')}}" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-columns"></i> <span>Захиалга</span></a>
+              <a href="{{url('order')}}" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-file-invoice-dollar"></i> <span>Захиалга</span></a>
               <ul class="dropdown-menu">
                 
                 <li><a class="nav-link render" href="{{url('create_loan')}}">Зээлэх</a></li>
