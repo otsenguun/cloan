@@ -10,7 +10,7 @@ class AdminController extends Controller
     public function admin(){
         
         $body = [];
-        $body['pagenumber'] = 1;
+        $body['pagenumber'] = 0;
         $body['pagesize'] = 25;
         // $response = AppHelper::ToCurl("/geninfo/flatCurrency","get",$body);
         
@@ -21,7 +21,8 @@ class AdminController extends Controller
 
         $response2 = AppHelper::ToCurl("/geninfo/convertRateCryptosDistinctLast","post",$body);
         $cryptos = json_decode($response2["body"]);
-        // dd($response);
+        // dd($cryptos);
+
         // dd($cryptos);
         return view("admin.main",compact("cryptos"));
     }
@@ -38,17 +39,17 @@ class AdminController extends Controller
     }
     public function showUsers(Request $request){
 
-        $body = ["pagenumber" => 1 ,"pagesize" => 25];
+        $body = ["pagenumber" => 0 ,"pagesize" => 25];
         $response = AppHelper::ToCurl("/admin/userslist","get",$body);
         
         $users = json_decode($response["body"]);
         // dd($response);
-        dd($response);
+        // dd($response);
         return view("admin.master.users",compact("users"));
     }
     public function get_last_curr(Request $request){
         $body = [];
-        $body['pagenumber'] = 1;
+        $body['pagenumber'] = 0;
         $body['pagesize'] = 25;
         $response2 = AppHelper::ToCurl("/geninfo/convertRateCryptosDistinctLast","post",$body);
         $cryptos = json_decode($response2["body"]);

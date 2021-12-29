@@ -8,12 +8,37 @@ use App\Helpers\AppHelper;
 class MasterController extends Controller
 {
     public function dashboard(Request $request){
-        return view("admin.master.dashboard");
+
+        $body = [];
+       
+        $page1 = 0;
+        if($request->lend_page > 0){
+            $page1 =  $request->lend_page - 1;
+        }
+        $body["pagenumber"] = $page1;
+        $body["pagesize"] = 5;
+        $response1 = AppHelper::ToCurl("/admin/orderLendListAll","post",$body);
+        $lend_list = json_decode($response1["body"]);
+
+        $body1 = [];
+        $page2 = 0;
+        if($request->borrow_page > 0){
+            $page2 =  $request->borrow_page - 1;
+        }
+        // $body["pagenumber"] = $page2;
+        $body1["pagenumber"] = $page2;
+        $body1["pagesize"] = 5;
+        $response2 = AppHelper::ToCurl("/admin/orderBorrowListAll","post",$body1);
+        $borrow_list = json_decode($response2["body"]);
+        // dd($borrow_list);
+        // dump($body1); 
+        return view("admin.master.dashboard",compact("borrow_list","lend_list","page1","page2"));
+
     }
     public function users(Request $request){
 
         $body = [];
-        $body["pagenumber"] = 1;
+        $body["pagenumber"] = 0;
         $body["pagesize"] = 25;
         $body["is_kyc_approved"] = $request->is_kyc_approved;
         $body["user_email"] = $request->email;
@@ -33,11 +58,11 @@ class MasterController extends Controller
 
         $body["index"] = 0;
         $isaproved = $user_index[2];
-        $response1 = AppHelper::ToCurl("/admin/userdetail","post",$body);
+        $response1 = AppHelper::ToCurl("/admin/userResources","post",$body);
         $body["index"] = 1;
-        $response2 = AppHelper::ToCurl("/admin/userdetail","post",$body);
+        $response2 = AppHelper::ToCurl("/admin/userResources","post",$body);
         $body["index"] = 2;
-        $response3 = AppHelper::ToCurl("/admin/userdetail","post",$body);
+        $response3 = AppHelper::ToCurl("/admin/userResources","post",$body);
 
         $user_info = $response1["body"];
         $user_info2 = $response2["body"];
@@ -49,7 +74,7 @@ class MasterController extends Controller
 
         $body_details["userid"] = $user_index[0];
         $body_details["index"] = 1;
-        $response_details = AppHelper::ToCurl("/admin/userdetailInfo","post",$body_details);
+        $response_details = AppHelper::ToCurl("/admin/userDetailInfo","post",$body_details);
         $user_info4 = $response_details["body"];
         $user_detail = json_decode($user_info4);
         
@@ -97,11 +122,11 @@ class MasterController extends Controller
         $body["userid"] = $request->id;
 
         $body["index"] = 0;
-        $response1 = AppHelper::ToCurl("/admin/userdetail","post",$body);
+        $response1 = AppHelper::ToCurl("/admin/userResources","post",$body);
         $body["index"] = 1;
-        $response2 = AppHelper::ToCurl("/admin/userdetail","post",$body);
+        $response2 = AppHelper::ToCurl("/admin/userResources","post",$body);
         $body["index"] = 2;
-        $response3 = AppHelper::ToCurl("/admin/userdetail","post",$body);
+        $response3 = AppHelper::ToCurl("/admin/userResources","post",$body);
 
         $user_info = $response1["body"];
         $user_info2 = $response2["body"];
@@ -113,7 +138,7 @@ class MasterController extends Controller
         $body_details["userid"] = $request->id;
         $body_details["index"] = 1;
 
-        $response_details = AppHelper::ToCurl("/admin/userdetailInfo","post",$body_details);
+        $response_details = AppHelper::ToCurl("/admin/userDetailInfo","post",$body_details);
 
         $user_info4 = $response_details["body"];
         $user_detail = json_decode($user_info4);
@@ -125,10 +150,29 @@ class MasterController extends Controller
     public function total_orders(Request $request){
 
         $body = [];
-        
-        $response = AppHelper::ToCurl("/user/orderBorrowList","get",$body);
+       
+        $page1 = 0;
+        if($request->lend_page > 0){
+            $page1 =  $request->lend_page - 1;
+        }
+        $body["pagenumber"] = $page1;
+        $body["pagesize"] = 25;
+        $response1 = AppHelper::ToCurl("/admin/orderLendListAll","post",$body);
+        $lend_list = json_decode($response1["body"]);
 
-        return view("admin.master.orders");
+        $body1 = [];
+        $page2 = 0;
+        if($request->borrow_page > 0){
+            $page2 =  $request->borrow_page - 1;
+        }
+        // $body["pagenumber"] = $page2;
+        $body1["pagenumber"] = $page2;
+        $body1["pagesize"] = 25;
+        $response2 = AppHelper::ToCurl("/admin/orderBorrowListAll","post",$body1);
+        $borrow_list = json_decode($response2["body"]);
+        // dd($borrow_list);
+        // dump($body1); 
+        return view("admin.master.orders",compact("borrow_list","lend_list","page1","page2"));
     }
 
     public function insertRate(Request $request){

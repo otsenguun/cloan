@@ -14,6 +14,9 @@
   padding: 5px 10px 10px 20px;
   border-radius:20px;
 }
+.custom_table td{
+    width: 200px;
+}
 </style>
 
 <div class="section-header">
@@ -102,8 +105,17 @@
         <div class="col-md-6">
             <div class="row mt-4">
                 <div class="col-md-12 result_div">
-                <div class="table-responsive">
-                    <table class="table table-striped table-hover table-md">
+
+                <!-- <ul>
+                   
+                    <li>Төлөх дүн : <b>1</b></li>
+                    <li>Зээлийн дүн : <b>1</b></li>
+                    <li>Хүү : <b>1</b> </li>
+                    <li>Шимтгэл : <b>1</b></li>
+                    <li>Виртуал : <b>1</b></li>
+                </ul> -->
+                <div>
+                    <table class="table table-striped table-hover table-md custom_table">
                     <tr>
                         <td>Төлөх дүн</td>
                         <td align="right" id="calculate_price_refund">-</td>
@@ -114,7 +126,7 @@
                     </tr>
                     <tr>
                         <td>Хүү</td>
-                        <td align="right" id="calculate_precent">3%</td>
+                        <td align="right" id="calculate_precent">-</td>
                     </tr>
                     <tr>
                         <td>Шимтгэл</td>

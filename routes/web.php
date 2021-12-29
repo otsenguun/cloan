@@ -20,36 +20,37 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('lang',[HomeController::class,'setlng']);
+// Route::get('lang',[HomeController::class,'setlng']);
 // Route::get('/',[HomeController::class,'home']);
-Route::get('/Loan',[HomeController::class,'loan']);
+Route::get('/Loan',[HomeController::class,'loan'])->middleware("auth2");
 
-Route::get('/wallet',[WalletController::class,'wallet']);
-Route::get('/wallet/income',[WalletController::class,'walletIncome']);
-Route::get('/wallet/outcome',[WalletController::class,'walletOutcome']);
-Route::get('/wallet/history',[WalletController::class,'walletHistory']);
+Route::get('/wallet',[WalletController::class,'wallet'])->middleware("auth2");
+Route::get('/wallet/income',[WalletController::class,'walletIncome'])->middleware("auth2");
+Route::get('/wallet/outcome',[WalletController::class,'walletOutcome'])->middleware("auth2");
+Route::get('/wallet/history',[WalletController::class,'walletHistory'])->middleware("auth2");
 // Route::get('/show_product_info/{id}',[HomeController::class,'show_product']);
 
 Route::get('/',[AdminController::class,'home']);
-Route::get('/dashboard',[AdminController::class,'dashboard']);
+Route::get('/dashboard',[AdminController::class,'dashboard'])->middleware("auth2");
 
-Route::get('/confirm',[HomeController::class,'confirm']);
+Route::get('/confirm',[HomeController::class,'confirm'])->middleware("auth2");
 
-Route::get('/user_details_org',[HomeController::class,'user_details_org']);
-Route::get('/create_loan',[LoanController::class,'create']);
-Route::get('/calculateLoaner',[LoanController::class,'calculateLoaner']);
-Route::get('/create_loaner',[LoanController::class,'createLoaner']);
+Route::get('/user_details_org',[HomeController::class,'user_details_org'])->middleware("auth2");
+Route::get('/create_loan',[LoanController::class,'create'])->middleware("auth2");
+Route::get('/calculateLoaner',[LoanController::class,'calculateLoaner'])->middleware("auth2");
+Route::get('/create_loaner',[LoanController::class,'createLoaner'])->middleware("auth2");
 
 
-Route::get('/dans',[LoanController::class,'dans']);
-Route::get('/Loanhistory',[LoanController::class,'historyLoan']);
+Route::get('/dans',[LoanController::class,'dans'])->middleware("auth2");
+Route::get('/Loanhistory',[LoanController::class,'historyLoan'])->middleware("auth2");
 
 
 Route::get('/dashboard2',[MasterController::class,'dashboard']);
-Route::get('/users',[MasterController::class,'users'])->middleware("auth2");;
-Route::get('/user/{id}',[MasterController::class,'user'])->middleware("auth2");;
+Route::get('/users',[MasterController::class,'users'])->middleware("auth2");
+Route::get('/user/{id}',[MasterController::class,'user'])->middleware("auth2");
 
-Route::get('/total_orders',[MasterController::class,'total_orders']);
+
+Route::get('/total_orders',[MasterController::class,'total_orders'])->middleware("auth2");
 // Route::get('/storeLend',[LoanController::class,'total_orders']);
 
 
@@ -63,6 +64,9 @@ Route::post('/storeRate',[MasterController::class,'storeRate'])->middleware("aut
 //user
 Route::post('/login2',[UserController::class,'login']);
 Route::post('/register2',[UserController::class,'register']);
+Route::get('/changePassword',[UserController::class,'changePass'])->middleware("auth2");
+Route::post('/changePassword',[UserController::class,'changePassword'])->middleware("auth2");
+
 Route::get('/home',[AdminController::class,'admin'])->middleware("auth2");
 Route::get('/me',[UserController::class,'me'])->middleware("auth2");
 Route::get('/user_details',[UserController::class,'user_details'])->middleware("auth2");

@@ -42,11 +42,12 @@
                                         <label for="">Is Approved</label>
                                       </div>
                                       <div class="col-md-1">
-                                        <input  type="submit" class="btn btn-sm btn-primary" value="Хайх">
+                                        <input  type="submit" class="btn btn-lg btn-primary" value="Хайх">
                                       </div>
                                     </div>
 
                               </form>
+                              <hr>
                               <div class="table-responsive">
                                 <table class="table table-bordered table-md">
                                   <tr>

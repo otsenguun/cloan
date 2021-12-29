@@ -111,7 +111,7 @@
         </div>
         <div class="modal-body ">
           <div class="show"></div>
-          <div> <a href="/" class="btn btn-primary" target="blank">PDF</a> </div>
+          <!-- <div> <a href="/" class="btn btn-primary" target="blank">PDF</a> </div> -->
         </div>
         <div class="modal-footer">
           <a href="#" id="borrowconfirm" type="button" class="btn btn-primary">Баталгаажуулах</a>
@@ -180,7 +180,7 @@
 
                     $("#calculate_price").html(result.order_borrow.CL_FLAT_AMOUNT + " " + result.order_borrow.CL_FLAT_CURRENCY);
                     $("#calculate_price_refund").html(result.order_borrow.CL_FLAT_EXPECTED_RETURN_AMOUNT + " " + result.order_borrow.CL_FLAT_CURRENCY);
-                    $("#calculate_precent").html("3%");
+                    $("#calculate_precent").html(  result.order_borrow.CL_BORROW_INTEREST_RATE+ " %");
                     $("#calculate_crypto").html(result.order_borrow.CL_CRYPTO_AMOUNT + " " + result.order_borrow.CL_CRYPTO_SNAME);
                     $("#borrowconfirm").attr("href","{{url('orderBorrowConfirm')}}" + "/" + result.order_borrow.id);
                     $("#borrowcancel").attr("href","{{url('orderBorrowCancel')}}" + "/" + result.order_borrow.id);
@@ -198,9 +198,7 @@
 
             }).fail(function(data, textStatus, xhr) {
 
-                    if(data.status == 401){
                     window.location.replace("{{url('/me')}}");
-                    }
                     
             });
         });
@@ -250,9 +248,8 @@
 
             }).fail(function(data, textStatus, xhr) {
 
-                    if(data.status == 401){
+            
                     window.location.replace("{{url('/me')}}");
-                    }
                     
             });
         });

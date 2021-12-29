@@ -79,53 +79,38 @@
                 <div class="card-header">
                   <h4>Биелсэн захиалга</h4>
                   <div class="card-header-action">
-                    <div class="btn-group">
-                      <a href="#" class="btn btn-primary">Week</a>
-                      <a href="#" class="btn">Month</a>
-                    </div>
+                  
                   </div>
                 </div>
                 <div class="card-body">
+                  <hr>
                 <div class="table-responsive">
                       <table class="table table-bordered table-md">
                         <tr>
                           <th>#</th>
-                          <th>Name</th>
-                          <th>Created At</th>
-                          <th>Status</th>
-                          <th>Action</th>
+                          <th>Дугаар</th>
+                          <th>Огноо</th>
+                          <th>Төлөв</th>
+                          <th>Дүн</th>
                         </tr>
+                        @foreach($borrow_list->all_order_borrow as $key => $borrow)
                         <tr>
-                          <td>1</td>
-                          <td>Irwansyah Saputra</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                          <td>{{ $key+1}}</td>
+                          <td>{{$borrow->id}}</td>
+                          <td>{{$borrow->CL_CREATED_DATE}}</td>
+
+                          <td>
+                       
+                            {!! App\Helpers\AppHelper::getInfoOrder($borrow->CL_STATUS) !!}
+                          </td>
+
+                          <td>{{$borrow->CL_CRYPTO_AMOUNT}}</td>
+                          <!-- <td><a href="{{url('orderBorrowCancel',$borrow->id)}}" class="btn btn-danger cancel">Цуцлах</a></td> -->
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Hasan Basri</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Kusnadi</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-danger">Not Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Rizal Fakhri</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
+                        @endforeach
                       </table>
                     </div>
-                </div>
+                  </div>
               </div>
             </div>
             <div class="col-lg-6 col-md-6 col-6 col-sm-6">
@@ -133,53 +118,38 @@
                 <div class="card-header">
                   <h4>Хүлээгдэж байгаа захиалга</h4>
                   <div class="card-header-action">
-                    <div class="btn-group">
-                      <a href="#" class="btn btn-primary">Week</a>
-                      <a href="#" class="btn">Month</a>
-                    </div>
+                  
                   </div>
                 </div>
                 <div class="card-body">
+                  <hr>
                 <div class="table-responsive">
-                      <table class="table table-bordered table-md">
+                    <table class="table table-bordered table-md">
                         <tr>
                           <th>#</th>
-                          <th>Name</th>
-                          <th>Created At</th>
-                          <th>Status</th>
-                          <th>Action</th>
+                          <th>Дугаар</th>
+                          <th>Огноо</th>
+                          <th>Төлөв</th>
+                          <th>Дүн</th>
                         </tr>
+                        @foreach($lend_list->all_order_lend as $key => $lend)
                         <tr>
-                          <td>1</td>
-                          <td>Irwansyah Saputra</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                          <td>{{ $key+1}}</td>
+                          <td>{{$lend->id}}</td>
+                          <td>{{$lend->CL_CREATED_DATE}}</td>
+
+                          <td>
+                           
+                            {!! App\Helpers\AppHelper::getInfoOrder($lend->CL_STATUS) !!}
+                          </td>
+
+                          <td>{{$lend->CL_TXN_AMOUNT}}</td>
+                          <!-- <td><a href="{{url('orderLendCancel',$lend->id)}}" class="btn btn-danger cancel">Цуцлах</a></td> -->
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Hasan Basri</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Kusnadi</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-danger">Not Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Rizal Fakhri</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
+                        @endforeach
                       </table>
                     </div>
-                </div>
+                  </div>
               </div>
             </div>
            

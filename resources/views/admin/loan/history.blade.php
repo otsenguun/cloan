@@ -18,7 +18,6 @@
 
           <div class="section-body">
             <h2 class="section-title">Зээлийн хүсэлт болон Зээлдүүлэх хүсэлтүүд</h2>
-            <p class="section-lead">Example of some Bootstrap table components.</p>
 
             <div class="row">
               <div class="col-12 col-md-12 col-lg-12">
@@ -43,10 +42,8 @@
                           <td>{{$borrow->CL_CREATED_DATE}}</td>
 
                           <td>
-                            @if($borrow->CL_STATUS == "true")
-                            <div class="badge badge-info">Хүлээгдэж байгаа</div>
-                            @endif
-                            {{$borrow->CL_STATUS}}
+                    
+                            {!! App\Helpers\AppHelper::getInfoOrder($borrow->CL_STATUS) !!}
                           </td>
 
                           <td>{{$borrow->CL_CRYPTO_AMOUNT}}</td>
@@ -97,10 +94,8 @@
                           <td>{{$lend->CL_CREATED_DATE}}</td>
 
                           <td>
-                            @if($lend->CL_STATUS == "true")
-                            <div class="badge badge-info">Хүлээгдэж байгаа</div>
-                            @endif
-                            {{$lend->CL_STATUS}}
+                     
+                            {!! App\Helpers\AppHelper::getInfoOrder($lend->CL_STATUS) !!}
                           </td>
 
                           <td>{{$lend->CL_TXN_AMOUNT}}</td>

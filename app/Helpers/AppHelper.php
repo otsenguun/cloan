@@ -74,6 +74,31 @@ class AppHelper
 
        return $roles;
     }
+    public static function getName(){
+
+        $name = json_decode($_COOKIE["user_name"]);
+ 
+        return $name;
+     }
+
+    public static function getInfoOrder($string){
+
+        $info = [
+                "CANCELED_BEDELETED" => "<span class='badge badge-danger'>Цуцлагдсан</span>",
+                "WAITING_CONFIRM" => "<span class='badge badge-dark'>Баталгаажуулаагүй</span>",
+                "CONFIRMED_WAITING_MATCH" => "<span class='badge badge-warning'>Хүлээгдэж буй</span>"
+        ];
+
+        if(isset($info[$string])){
+            return $info[$string];
+        }else{
+            return "";
+        }
+ 
+        // return $name;
+     }
+
+ 
 
     public static function CheckAuth(){
 

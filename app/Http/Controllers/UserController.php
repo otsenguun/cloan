@@ -27,7 +27,8 @@ class UserController extends Controller
         if($code == 200 && isset($response->access_token )){
             setcookie("access_token", $response->access_token);
             setcookie("user_role", json_encode($response->roles));
-            // dd("dasd");
+            setcookie("user_name", $request->username);
+            // dd($request->username);
             return redirect("/home");
         }else{
             $exec = "Нууц үг эсвэл нэвтрэх нэр буруу байна";
@@ -63,11 +64,17 @@ class UserController extends Controller
     }
 
     public function logout(){
-
+        $body = [];
         if (isset($_COOKIE['access_token'])) {
+            $back = AppHelper::ToCurl("/geninfo/logout","get",$body);
+            
             unset($_COOKIE['access_token']); 
             setcookie('access_token', null, -1, '/'); 
             setcookie('user_role', null, -1, '/'); 
+            setcookie('user_name', null, -1, '/'); 
+
+           
+
             return redirect("/");
         } else {
             die("s");
@@ -108,8 +115,29 @@ class UserController extends Controller
         $back = AppHelper::ToCurl("/user/meinfoKYC","post",$body);
         // dd($back);
         $response = json_decode($back['body']);
-        $code = $back["http_code"];
-        return view('auth.register_second',compact("response"));
+
+       
+        $body2 = [];
+        
+        $body2["index"] = 0;
+        $response1 = AppHelper::ToCurl("/geninfo/userResources","post",$body2);
+        $body2["index"] = 1;
+        $response2 = AppHelper::ToCurl("/geninfo/userResources","post",$body2);
+        $body2["index"] = 2;
+        $response3 = AppHelper::ToCurl("/geninfo/userResources","post",$body2);
+
+        $user_info = $response1["body"];
+        $user_info2 = $response2["body"];
+        $user_info3 = $response3["body"];
+        $user_images = 
+        [
+            "f_img" => $user_info,
+            "b_img" => $user_info2,
+            "s_img" => $user_info3
+        ];
+   
+        // $code = $back["http_code"];
+        return view('auth.register_second',compact("response","user_images"));
 
     }
 
@@ -152,13 +180,36 @@ class UserController extends Controller
 
         if($code == 200){
             // dd($back);
-            return redirect("/home");
+            return redirect("/home")->with('success', 'Амжилттай илгээгдлээ');
         }else{
-            return "failed";
+            return redirect()->back()->with('failed', 'Амжилтгүй боллоо мэдээлэлээ шалгануу');   
         }
 
     }
+    
+    public function changePass(Request $request){
 
+        $body = [];
+        $msj = "";
+        return view('admin.loan.change_password',compact("msj"));
+
+    }
+    public function changePassword(Request $request){
+
+        $body = [];
+        $body["password_old"] =  $request->password_old;
+        $body["password_new"] =  $request->password_new;
+        $body["password_new_repeat"] =  $request->password_new_repeat;
+
+        $back = AppHelper::ToCurl("/geninfo/changePassword","post",$body);
+        $response = json_decode($back['body']);
+        $code = $back["http_code"];
+        dd($body);
+
+        return view('admin.loan.change_password',compact("msj"));
+
+
+    }
     public function health(Request $request){
 
         $body = [];

@@ -7,7 +7,7 @@
       
         </form>
         <ul class="navbar-nav navbar-right">
-          <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
+          <!-- <li class="dropdown dropdown-list-toggle"><a href="#" data-toggle="dropdown" class="nav-link nav-link-lg message-toggle beep"><i class="far fa-envelope"></i></a>
             <div class="dropdown-menu dropdown-list dropdown-menu-right">
               <div class="dropdown-header">Messages
                 <div class="float-right">
@@ -131,10 +131,15 @@
                 <a href="#">View All <i class="fas fa-chevron-right"></i></a>
               </div>
             </div>
-          </li>
+          </li> -->
+          @php
+          $user_name = App\Helpers\AppHelper::getName();
+          @endphp
+
           <li class="dropdown"><a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle nav-link-lg nav-link-user">
             <img alt="image" src="{{asset('custom/img/avatar/avatar-1.png')}}" class="rounded-circle mr-1">
-            <div class="d-sm-none d-lg-inline-block">Name</div></a>
+            <div class="d-sm-none d-lg-inline-block">{{$user_name}}</div></a>
+
             <div class="dropdown-menu dropdown-menu-right">
               <div class="dropdown-title">Logged in 5 min ago</div>
               <a href="{{url('me')}}" class="dropdown-item has-icon render">
@@ -144,8 +149,12 @@
                 <i class="fas fa-bolt"></i> Данс
               </a>
               <a href="{{url('user_details')}}" class="dropdown-item has-icon">
-                <i class="fas fa-cog"></i> Тохиргоо
+                <i class="fas fa-cog"></i> KYC 
               </a>
+              <a href="{{url('changePassword')}}" class="dropdown-item has-icon">
+                <i class="fas fa-cog"></i> Нууц үг солих 
+              </a>
+              
               <div class="dropdown-divider"></div>
 
               <a href="{{ url('logout2') }}" class="dropdown-item has-icon">Гарах</a>

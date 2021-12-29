@@ -76,14 +76,14 @@
                             <td>Зээлийн дүн</td>
                             <td id="calculate_price">-</td>
                         </tr>
-                        <tr>
+                        <!-- <tr>
                             <td>Хүү</td>
                             <td>3%</td>
                         </tr>
                         <tr>
                             <td>Шимтгэл</td>
                             <td>50₮</td>
-                        </tr>
+                        </tr> -->
                         </table>
                     </div>
                     

@@ -15,6 +15,14 @@
                 </div>
                 </div>
                 <div class="section-body">
+                       
+                @if (\Session::has('success'))
+                <div class="alert alert-success">
+                        <ul>
+                        <li>{!! \Session::get('success') !!}</li>
+                        </ul>
+                </div>
+                @endif
                 <div class="row">
                         <div class="col-md-12">
                                 <div class="row">

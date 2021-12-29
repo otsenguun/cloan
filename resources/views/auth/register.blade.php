@@ -1,3 +1,4 @@
+
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
@@ -8,7 +9,19 @@
 
         <form method="POST" action="{{ url('register2') }}">
             @csrf
-
+            <div class="mt-4">
+           <h4 >АНХААРУУЛГА:</h4> 
+                        <ul>
+                            <li> 1.     “Койнлэнд” ХХК нь харилцагчдын хэтэвчрүү нэвтрэх эрхгүй бөгөөд зөвхөн харилцагч өөрөө виртуал хөрөнгөө захиран зарцуулах эрхтэй. Иймд таны хэтэвч дэх виртуал хөрөнгө алдагдсан тохиолдолд “Койнлэнд” ХХК хариуцлага хүлээхгүй болно.
+                </li>
+                <li>   2.     Виртуал хөрөнгө нь ханшийн өндөр хэлбэлзэлтэй мөн цахим халдлагад өртөх магадлалтай тул хөрөнгөө алдах эрсдэлтэйг анхаарна уу.
+                </li>
+                <li>  3.     Ханшийн хэлбэлзлээс болж барьцаанд тавигдсан виртуал хөрөнгийн үнэ зээлийн үлдэгдлээс доош унах эрсдэлтэй тэрхүү эрсдэлийг “Койнлэнд” ХХК хариуцахгүй болно.
+                </li>
+                <li>  4.     Виртуал хөрөнгө нь хууль ёсны мөнгөн тэмдэгтэд хамаарахгүй  Төв банк, Засгийн газраас баталгаажаагүй, виртуал хөрөнгө нь хадгаламжийн даатгал, үнэт цаасны хөрөнгө оруулагчдыг хамгаалах аливаа даатгалд хамаардаггүй хөрөнгө юм.
+            </li>
+                        </ul>
+            </div>
             <div>
                 <x-jet-label for="name" value="Утасны дугаар" />
                 <x-jet-input id="name" class="block mt-1 w-full" type="text" name="mobilenumber" :value="old('name')" required autofocus autocomplete="name" />
@@ -38,6 +51,10 @@
                 <x-jet-label for="password_confirmation" value="Нууц үг давт" />
                 <x-jet-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required />
             </div>
+            <div class="mt-4">
+                <x-jet-label value="Laravel Google Recaptcha" />
+                {!! htmlFormSnippet() !!}
+            </div>
          
 
             <div class="flex items-center justify-end mt-4">
@@ -49,6 +66,8 @@
                     Бүртгүүлэх
                 </x-jet-button>
             </div>
+         
         </form>
     </x-jet-authentication-card>
 </x-guest-layout>
+{!! ReCaptcha::htmlScriptTagJsApi() !!}

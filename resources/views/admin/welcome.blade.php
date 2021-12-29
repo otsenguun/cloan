@@ -44,6 +44,10 @@
                 box-shadow: 48px 16px 48px rgb(24 37 56 / 12%);
                 border-radius: 4px;
             }
+            .reddot {
+                text-decoration: underline;
+                color:grey;
+            }
         </style>
     </head>
     <body id="page-top">
@@ -81,12 +85,12 @@
                     <div class="col-lg-6">
                         <!-- Mashead text and app badges-->
                         <div class="mb-5 mb-lg-0 text-center text-lg-start">
-                            <h1 class="display-1 lh-1 mb-3">МОНГОЛЫН АНХНЫ КРИПТО БАРЬЦААЛСАН ЗЭЭЛ</h1>
-                            <p class="lead fw-normal text-muted mb-5">Криптовалют худалдан авахыг хүссэн хүн бүр iOS болон Android үйлдлийн системтэй гар утсаа ашиглан, хүссэн газраасаа бүртгүүлж, криптовалютын арилжаанд оролцох боломжтой.</p>
-                            <div class="d-flex flex-column flex-lg-row align-items-center">
+                            <h1 class="display-1 lh-1 mb-3">КРИПТО БАНК</h1>
+                            <p class="lead fw-normal text-muted mb-5">Харилцагч та нэг талаас зээл олгогч болж орлогоо нэмэгдүүлэх боломжтой нөгөө талаас зээл авч бэлэн мөнгөний хэрэгцээгээ хангах боломжтой P2P буюу дундын зуучлалгүй криптовалютын зээлийн цогц платформыг танилцуулж байна.</p>
+                            <!-- <div class="d-flex flex-column flex-lg-row align-items-center">
                                 <a class="me-lg-3 mb-4 mb-lg-0" href="#!"><img class="app-badge" src="{{asset('frontend/assets/img/google-play-badge.svg')}}" alt="..." /></a>
                                 <a href="#!"><img class="app-badge" src="{{asset('frontend/assets/img/app-store-badge.svg')}}" alt="..." /></a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-lg-6">
@@ -125,7 +129,7 @@
             <div class="container px-5">
                 <div class="row gx-5 justify-content-center">
                     <div class="col-xl-8">
-                        <div class="h2 fs-1 text-white mb-4">"Та виртуал хөрөнгөө барьцаалж зээл авах болон хөрөнгө оруулах боломжтой боллоо"</div>
+                        <div class="h2 fs-1 text-white mb-4">МОНГОЛЫН АНХНЫ БҮХ ТӨРЛИЙН ВИРТУАЛ ХӨРӨНГӨ БАРЬЦААЛСАН P2P ЗЭЭЛИЙН ПЛАТФОРМ</div>
                         <div class="col-md-12 text-center">  <img src="{{asset('images/coinlend_logo.png')}}" alt="..." style="width: 100%" /></div>
                       
 
@@ -137,23 +141,23 @@
         <section id="features">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center">
-                    <div class="col-lg-8 order-lg-1 mb-5 mb-lg-0">
+                    <div class="col-lg-15 order-lg-1 mb-5 mb-lg-0">
                         <div class="container-fluid px-5">
                             <div class="row gx-5">
                                 <div class="col-md-6 mb-5">
                                     <!-- Feature item-->
                                     <div class="text-center">
-                                        <i class="bi-phone icon-feature text-gradient d-block mb-3"></i>
-                                        <h3 class="font-alt">Device Mockups</h3>
-                                        <p class="text-muted mb-0">Ready to use HTML/CSS device mockups, no Photoshop required!</p>
+                                        <i class="bi bi-currency-bitcoin icon-feature text-gradient d-block mb-3"></i>
+                                        <h3 class="font-alt">ЗЭЭЛЭХ</h3>
+                                        <p class="text-muted mb-0">Виртуал хөрөнгөө барьцаалан бэлэн мөнгөөр зээл авна.</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-5">
                                     <!-- Feature item-->
                                     <div class="text-center">
-                                        <i class="bi-camera icon-feature text-gradient d-block mb-3"></i>
-                                        <h3 class="font-alt">Flexible Use</h3>
-                                        <p class="text-muted mb-0">Put an image, video, animation, or anything else in the screen!</p>
+                                        <i class="bi bi-cash-coin icon-feature text-gradient d-block mb-3"></i>
+                                        <h3 class="font-alt">ЗЭЭЛДҮҮЛЭХ</h3>
+                                        <p class="text-muted mb-0">Зээл олгож орлогоо өсгөнө.</p>
                                     </div>
                                 </div>
                             </div>
@@ -161,56 +165,58 @@
                                 <div class="col-md-6 mb-5 mb-md-0">
                                     <!-- Feature item-->
                                     <div class="text-center">
-                                        <i class="bi-gift icon-feature text-gradient d-block mb-3"></i>
-                                        <h3 class="font-alt">Free to Use</h3>
-                                        <p class="text-muted mb-0">As always, this theme is free to download and use for any purpose!</p>
+                                        <i class="bi bi-piggy-bank icon-feature text-gradient d-block mb-3"></i>
+                                        <h3 class="font-alt">ХАДГАЛАМЖ</h3>
+                                        <p class="text-muted mb-0">Виртуал хөрөнгөө хүүтэй хадгалах</p>
+                                        <p class="reddot">тун удахгүй</p>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <!-- Feature item-->
                                     <div class="text-center">
-                                        <i class="bi-patch-check icon-feature text-gradient d-block mb-3"></i>
-                                        <h3 class="font-alt">Open Source</h3>
-                                        <p class="text-muted mb-0">Since this theme is MIT licensed, you can use it commercially!</p>
+                                        <i class="bi bi-currency-exchange icon-feature text-gradient d-block mb-3"></i>
+                                        <h3 class="font-alt">АРИЛЖАА</h3>
+                                        <p class="text-muted mb-0">Виртуал хөрөнгийн арилжаа хийх.</p>
+                                        <p class="reddot">тун удахгүй</p>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-lg-4 order-lg-0">
+                    <!-- <div class="col-lg-4 order-lg-0">
                         <!-- Features section device mockup-->
-                        <div class="features-device-mockup">
+                        <!-- <div class="features-device-mockup">
                             <svg class="circle" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                                 <defs>
                                     <linearGradient id="circleGradient" gradientTransform="rotate(45)">
                                         <stop class="gradient-start-color" offset="0%"></stop>
                                         <stop class="gradient-end-color" offset="100%"></stop>
-                                    </linearGradient>
-                                </defs>
+                                    </linearGradient> -->
+                                <!-- </defs>
                                 <circle cx="50" cy="50" r="50"></circle></svg
                             ><svg class="shape-1 d-none d-sm-block" viewBox="0 0 240.83 240.83" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(120.42 -49.88) rotate(45)"></rect>
                                 <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(-49.88 120.42) rotate(-45)"></rect></svg
                             ><svg class="shape-2 d-none d-sm-block" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
                             <div class="device-wrapper">
-                                <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
-                                    <div class="screen bg-black">
+                                <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black"> -->
+                                    <!-- <div class="screen bg-black">
                                         <!-- PUT CONTENTS HERE:-->
                                         <!-- * * This can be a video, image, or just about anything else.-->
                                         <!-- * * Set the max width of your media to 100% and the height to-->
                                         <!-- * * 100% like the demo example below.-->
-                                        <video muted="muted" autoplay="" loop="" style="max-width: 100%; height: 100%"><source src="{{asset('frontend/assets/img/demo-screen.mp4')}}" type="video/mp4" /></video>
+                                        <!-- <video muted="muted" autoplay="" loop="" style="max-width: 100%; height: 100%"><source src="{{asset('frontend/assets/img/demo-screen.mp4')}}" type="video/mp4" /></video> -->
                                         <!-- <img src="{{asset('images/coinlend_logo.png')}}" alt=""> -->
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                                    <!-- </div> -->
+                                <!-- </div> -->
+                            <!-- </div> -->
+                        <!-- </div> --> 
+                    <!-- </div> --> 
+                </div=>
             </div>
         </section>
         <!-- Basic features section-->
-        <section class="bg-light">
+        <!-- <section class="bg-light">
             <div class="container px-5">
                 <div class="row gx-5 align-items-center justify-content-center justify-content-lg-between">
                     <div class="col-12 col-lg-5">
@@ -222,9 +228,9 @@
                     </div>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- Call to action section-->
-        <section class="cta">
+        <!-- <section class="cta">
             <div class="cta-content">
                 <div class="container px-5">
                     <h2 class="text-white display-1 lh-1 mb-4">
@@ -235,7 +241,7 @@
                     <a class="btn btn-outline-light py-3 px-4 rounded-pill" href="https://startbootstrap.com/theme/new-age" target="_blank">Download for free</a>
                 </div>
             </div>
-        </section>
+        </section> -->
         <!-- App badge section-->
         <section class="bg-gradient-primary-to-secondary" id="download">
             <div class="container px-5">

@@ -47,11 +47,13 @@ class Auth2
         // dd($output);
         $response = json_decode($output);
         // dd($response);
+        
 
         if($httpcode == 401){
             return redirect()->route('login');
         }else{
             setcookie("user_role", json_encode($response->roles));
+            setcookie("user_name", json_encode($response->username));
             return $next($request);
         }
         

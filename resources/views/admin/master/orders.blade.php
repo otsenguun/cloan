@@ -8,7 +8,7 @@
         <section class="section">
 <div class="section-header">
 
-            <h1>Table</h1>
+            <h1>Хүсэлтүүд</h1>
             <div class="section-header-breadcrumb">
               <div class="breadcrumb-item active"><a href="#">Нүүр хуудас</a></div>
               <div class="breadcrumb-item"><a href="#">Захиалга</a></div>
@@ -17,8 +17,7 @@
           </div>
 
           <div class="section-body">
-            <h2 class="section-title">Table</h2>
-            <p class="section-lead">Example of some Bootstrap table components.</p>
+            <h2 class="section-title">Жагсаалт</h2>
 
             <div class="row">
               <div class="col-6 col-md-6 col-lg-6">
@@ -27,43 +26,31 @@
                     <h4>Зээлдүүлэх</h4>
                   </div>
                   <div class="card-body">
-                    <div class="table-responsive">
+                    <hr>
+                  <div class="table-responsive">
                       <table class="table table-bordered table-md">
                         <tr>
                           <th>#</th>
-                          <th>Name</th>
-                          <th>Created At</th>
-                          <th>Status</th>
-                          <th>Action</th>
+                          <th>Дугаар</th>
+                          <th>Огноо</th>
+                          <th>Төлөв</th>
+                          <th>Дүн</th>
                         </tr>
+                        @foreach($borrow_list->all_order_borrow as $key => $borrow)
                         <tr>
-                          <td>1</td>
-                          <td>Irwansyah Saputra</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                          <td>{{ $key+1}}</td>
+                          <td>{{$borrow->id}}</td>
+                          <td>{{$borrow->CL_CREATED_DATE}}</td>
+
+                          <td>
+                           
+                            {!! App\Helpers\AppHelper::getInfoOrder($borrow->CL_STATUS) !!}
+                          </td>
+
+                          <td>{{$borrow->CL_CRYPTO_AMOUNT}}</td>
+                          <!-- <td><a href="{{url('orderBorrowCancel',$borrow->id)}}" class="btn btn-danger cancel">Цуцлах</a></td> -->
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Hasan Basri</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Kusnadi</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-danger">Not Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Rizal Fakhri</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
+                        @endforeach
                       </table>
                     </div>
                   </div>
@@ -73,11 +60,11 @@
                         <li class="page-item disabled">
                           <a class="page-link" href="#" tabindex="-1"><i class="fas fa-chevron-left"></i></a>
                         </li>
-                        <li class="page-item active"><a class="page-link" href="#">1 <span class="sr-only">(current)</span></a></li>
-                        <li class="page-item">
-                          <a class="page-link" href="#">2</a>
+                        <li class="page-item @if($page2 == 0) active @endif"><a class="page-link" href="{{url('total_orders').'?borrow_page=1'}}">1 <span class="sr-only">(current)</span></a></li>
+                        <li class="page-item @if($page2 == 1) active @endif"">
+                          <a class="page-link" href="{{url('total_orders').'?borrow_page=2'}}">2</a>
                         </li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item @if($page2 == 2) active @endif""><a class="page-link" href="{{url('total_orders').'?borrow_page=3'}}">3</a></li>
                         <li class="page-item">
                           <a class="page-link" href="#"><i class="fas fa-chevron-right"></i></a>
                         </li>
@@ -92,43 +79,31 @@
                     <h4>Зээлэх</h4>
                   </div>
                   <div class="card-body">
-                    <div class="table-responsive">
-                      <table class="table table-bordered table-md">
+                    <hr>
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-md">
                         <tr>
                           <th>#</th>
-                          <th>Name</th>
-                          <th>Created At</th>
-                          <th>Status</th>
-                          <th>Action</th>
+                          <th>Дугаар</th>
+                          <th>Огноо</th>
+                          <th>Төлөв</th>
+                          <th>Дүн</th>
                         </tr>
+                        @foreach($lend_list->all_order_lend as $key => $lend)
                         <tr>
-                          <td>1</td>
-                          <td>Irwansyah Saputra</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
+                          <td>{{ $key+1}}</td>
+                          <td>{{$lend->id}}</td>
+                          <td>{{$lend->CL_CREATED_DATE}}</td>
+
+                          <td>
+                   
+                            {!! App\Helpers\AppHelper::getInfoOrder($lend->CL_STATUS) !!}
+                          </td>
+
+                          <td>{{$lend->CL_TXN_AMOUNT}}</td>
+                          <!-- <td><a href="{{url('orderLendCancel',$lend->id)}}" class="btn btn-danger cancel">Цуцлах</a></td> -->
                         </tr>
-                        <tr>
-                          <td>2</td>
-                          <td>Hasan Basri</td>
-                          <td>2017-01-09</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>3</td>
-                          <td>Kusnadi</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-danger">Not Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
-                        <tr>
-                          <td>4</td>
-                          <td>Rizal Fakhri</td>
-                          <td>2017-01-11</td>
-                          <td><div class="badge badge-success">Active</div></td>
-                          <td><a href="#" class="btn btn-secondary">Detail</a></td>
-                        </tr>
+                        @endforeach
                       </table>
                     </div>
                   </div>
