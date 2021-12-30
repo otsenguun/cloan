@@ -168,16 +168,21 @@ class UserController extends Controller
 
         $tmpfile = $_FILES["reg_1"]['tmp_name'];
         $filename = basename($_FILES["reg_1"]['name']);
-        $body["reg_1"] =  curl_file_create($tmpfile, $_FILES["reg_1"]['type'], $filename);
-
+        // dd($filename !="");
+        if($filename !=""){
+            $body["reg_1"] =  curl_file_create($tmpfile, $_FILES["reg_1"]['type'], $filename);
+        }
+        
         $tmpfile1 = $_FILES["reg_2"]['tmp_name'];
         $filename1 = basename($_FILES["reg_2"]['name']);
-        $body["reg_2"] =  curl_file_create($tmpfile1, $_FILES["reg_2"]['type'], $filename1);
-
+        if($filename1 !=""){
+            $body["reg_2"] =  curl_file_create($tmpfile1, $_FILES["reg_2"]['type'], $filename1);
+        }
         $tmpfile2 = $_FILES["reg_3"]['tmp_name'];
         $filename2 = basename($_FILES["reg_3"]['name']);
-        $body["reg_3"] =  curl_file_create($tmpfile2, $_FILES["reg_3"]['type'], $filename2);
- 
+        if($filename2 !=""){
+            $body["reg_3"] =  curl_file_create($tmpfile2, $_FILES["reg_3"]['type'], $filename2);
+        }
 
         $back = AppHelper::ToCurl("/user/meupdateKYC","post",$body);
         // dump($body);
@@ -241,6 +246,40 @@ class UserController extends Controller
         // return view('auth.register_second',compact("response"));
 
     }
+
+    public function emailconfirm(Request $request){
+
+        $body = [];
+  
+       
+        $back = AppHelper::ToCurl("/geninfo/sendVerifyEmail","get",$body);
+
+        // dd($back);
+
+        return view('admin.loan.verify_email');
+
+    }
+
+    public function emailconfirmToken(Request $request){
+
+        $body = [];
+        $body['token'] = $request->token;
+    //    dd($request->token);
+        $back = AppHelper::ToCurl("/manage/verifyingEmailWithToken","post",$body);
+        $response = json_decode($back['body']);
+        // dd($back);
+        $msj = "";
+        if(isset($response->success) && $response->success == true){
+            $msj = "Баталгаажлаа";
+        }else{
+            $msj = "Амжилтгүй";
+        }
+
+        return view('admin.loan.verify_email_done',compact("msj"));
+
+    }
+
+    
 
     
 
