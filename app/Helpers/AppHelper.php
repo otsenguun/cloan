@@ -98,7 +98,43 @@ class AppHelper
         // return $name;
      }
 
- 
+     public static function getCryptoIMG($name,$index){
+
+        $main_url = "https://d2dyd4ittdzdji.cloudfront.net/apib-a"; 
+        $sub_url = "/geninfo/cryptoResources";
+        
+        $body = [
+            "crypto_short_name" => $name,
+            "index" => $index
+        ];
+        $ch = curl_init();
+
+        // set url
+        curl_setopt($ch, CURLOPT_URL, $main_url.$sub_url);
+
+        if(isset($_COOKIE["access_token"])){
+            $token = $_COOKIE["access_token"];
+            $headers[] = ("Authorization: Bearer ".$_COOKIE["access_token"]);
+        }else{
+            return redirect()->route('login');
+        }
+        $headers[] = ("Content-Type: multipart/form-data");
+        curl_setopt($ch, CURLOPT_HTTPHEADER,$headers);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS,$body);
+        $output = curl_exec($ch);
+        
+        $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);  
+
+        $response = json_decode($output);
+        // dd($response);
+        return $output;
+       
+     }
+
+     
 
     public static function CheckAuth(){
 

@@ -153,7 +153,7 @@
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">
                      
-                      <input type="checkbox" name="is_consent_agreed" class="custom-control-input" id="agree">
+                      <input type="checkbox" name="is_consent_agreed" class="custom-control-input" id="agree" required>
                       <label class="custom-control-label" for="agree">Үйлчилгээний нөхцөл зөвшөөрөх</label>
                       <button class="btn btn-info" type="button" data-toggle="modal" data-target="#exampleModalLong"> Унших</button>
                     </div>
@@ -196,7 +196,7 @@
       </div>
       <div class="modal-body">
     <span>
-        &nbsp;Үйлчилгээний нөхцөл нь coinlend.mn виртуал хөрөнгийн үйлчилгээ үзүүлэхгүй холбоотой бүх талын харилцааг зохицуулна. Харилцагч үйлчилгээний нөхцөлтэй танилцаж зөвшөөрснөөр үйлчилгээтэй холбоотой холбоотой харилцаанд оролцох эрх
+        &nbsp;Үйлчилгээний нөхцөл нь coinlend.mn виртуал хөрөнгийн үйлчилгээ үзүүлэхтэй холбоотой бүх талын харилцааг зохицуулна. Харилцагч үйлчилгээний нөхцөлтэй танилцаж зөвшөөрснөөр үйлчилгээтэй холбоотой холбоотой харилцаанд оролцох эрх
         үүрэг, хариуцлагыг хүлээхээр талууд тохиролцсонд тооцогдоно.
     </span>
     <br />
