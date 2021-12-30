@@ -83,6 +83,7 @@ Route::get('/orderLendCancel/{id}  ',[LoanController::class,'LendCancel'])->midd
 
 
 Route::post('/orderLend ',[LoanController::class,'storeLoaner'])->middleware("auth2");
+Route::get('/coming_soon ',[LoanController::class,'coming_soon'])->middleware("auth2");
 
 Route::get('/get_last_curr ',[AdminController::class,'get_last_curr'])->middleware("auth2");
 

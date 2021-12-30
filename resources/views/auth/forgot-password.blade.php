@@ -1,11 +1,11 @@
 <x-guest-layout>
     <x-jet-authentication-card>
         <x-slot name="logo">
-            <x-jet-authentication-card-logo />
+        <img src="{{url('images/coinlend_logo.png')}}" alt="" style="width:400px;">
         </x-slot>
 
         <div class="mb-4 text-sm text-gray-600">
-            {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+           Та нууц үгээ мартсан бол өөрийн бүртгэлтэй email-ээр сэргээх боломжтой
         </div>
 
         @if (session('status'))
@@ -14,9 +14,9 @@
             </div>
         @endif
 
-        <x-jet-validation-errors class="mb-4" />
+       
 
-        <form method="POST" action="{{ route('password.email') }}">
+        <form method="POST" action="#">
             @csrf
 
             <div class="block">
@@ -26,7 +26,7 @@
 
             <div class="flex items-center justify-end mt-4">
                 <x-jet-button>
-                    {{ __('Email Password Reset Link') }}
+                   Нууц үг сэргээх холбоос авах
                 </x-jet-button>
             </div>
         </form>

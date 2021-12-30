@@ -30,6 +30,15 @@ $user_roles = App\Helpers\AppHelper::getRole()
               </ul> -->
             </li>
             <li class="dropdown">
+              <a href="{{url('coming_soon')}}" class="nav-link" ><i class="fas fa-file-invoice-dollar"></i><span>Захиалга</span></a>
+              <!-- <button class="nav-link" type="button" data-toggle="modal" data-target="#coming_soon">   </button> -->
+              <!-- <ul class="dropdown-menu">
+                <li><a class="nav-link render" href="{{url('me')}}" urls="{{url('wallet')}}">Үлдэгдэл</a></li>
+                <li><a class="nav-link" href="index.html">Хуулга</a></li>
+                <li><a class="nav-link" href="index.html">Орлого/Зарлага</a></li>
+              </ul> -->
+            </li>
+            <!-- <li class="dropdown">
               <a href="{{url('order')}}" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-file-invoice-dollar"></i> <span>Захиалга</span></a>
               <ul class="dropdown-menu">
                 
@@ -37,7 +46,7 @@ $user_roles = App\Helpers\AppHelper::getRole()
                 <li><a class="nav-link render" href="{{url('create_loaner')}}">Зээлдүүлэх</a></li>
                 <li><a class="nav-link render" href="{{url('Loanhistory')}}">Түүх</a></li>
               </ul>
-            </li>
+            </li> -->
            @endif
            @if(in_array("cl-admin",$user_roles))
             <!-- admin -->

@@ -135,9 +135,15 @@ class UserController extends Controller
             "b_img" => $user_info2,
             "s_img" => $user_info3
         ];
-   
+        
+        $f_body = [];
+        $financialInsts = AppHelper::ToCurl("/geninfo/financialInsts","get",$f_body);
+        
+        $bank_info = json_decode($financialInsts["body"]);
+        // dd($response);
+
         // $code = $back["http_code"];
-        return view('auth.register_second',compact("response","user_images"));
+        return view('auth.register_second',compact("response","user_images","bank_info"));
 
     }
 
@@ -154,6 +160,9 @@ class UserController extends Controller
         $body["address"] =  "Хан-Уул";
         $body["consent_agree_id"] =  "consent_id";
         $body["is_consent_agreed"] =  'true';
+        $body["financial_institution_name"] =  $request->financial_institution_name;
+        $body["financial_account"] =  $request->financial_account;
+        $body["financial_account_name"] =  $request->financial_account_name;
 
         $url  = URL::to('/');
 
@@ -180,7 +189,7 @@ class UserController extends Controller
 
         if($code == 200){
             // dd($back);
-            return redirect("/home")->with('success', 'Амжилттай илгээгдлээ');
+            return redirect("/me")->with('success', 'Амжилттай илгээгдлээ');
         }else{
             return redirect()->back()->with('failed', 'Амжилтгүй боллоо мэдээлэлээ шалгануу');   
         }

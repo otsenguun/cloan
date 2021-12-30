@@ -172,5 +172,12 @@ class LoanController extends Controller
         return redirect("/Loanhistory");
 
     }
+
+    public function coming_soon(){
+      
+      
+        return view("admin.loan.coming_soon");
+
+    }
     
 }

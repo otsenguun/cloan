@@ -128,6 +128,27 @@
                     </div>
 
                   </div>
+                  <div class="row">
+                    <div class="form-group col-md-4">
+                      <label for="last_name">Данс</label>
+                      <!-- <input id="last_name" type="select" class="form-control" name="last_name">
+                     -->
+                     <select name="financial_institution_name" id="" class="form-control" required>
+                       <option value="">-Сонго-</option>
+                      @foreach($bank_info->gen_financialInsts as $bank)
+                      <option @if(isset($response->userlegit_financial->CL_FINST_NAME) && $response->userlegit_financial->CL_FINST_NAME == $bank->CL_FINST_NAME) selected @endif value="{{$bank->CL_FINST_NAME}}">{{$bank->CL_FINST_NAME_MN}}</option>
+                      @endforeach
+                     </select>
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="last_name">Дансны дугаар</label>
+                      <input id="last_name" type="number" class="form-control" name="financial_account" required value="{{isset($response->userlegit_financial->CL_FINST_ACCT) ? $response->userlegit_financial->CL_FINST_ACCT : ''}}">
+                    </div>
+                    <div class="form-group col-md-4">
+                      <label for="last_name">Дансны Нэр</label>
+                      <input id="last_name" type="text" class="form-control" name="financial_account_name" required value="{{isset($response->userlegit_financial->CL_FINST_ACCT_NAME) ? $response->userlegit_financial->CL_FINST_ACCT_NAME : ''}}">
+                    </div>
+                  </div>
 
                   <div class="form-group">
                     <div class="custom-control custom-checkbox">

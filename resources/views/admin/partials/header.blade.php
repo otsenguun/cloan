@@ -145,9 +145,9 @@
               <a href="{{url('me')}}" class="dropdown-item has-icon render">
                 <i class="far fa-user"></i> Мэдээлэл
               </a>
-              <a href="{{url('dans')}}" class="dropdown-item has-icon">
+              <!-- <a href="{{url('dans')}}" class="dropdown-item has-icon">
                 <i class="fas fa-bolt"></i> Данс
-              </a>
+              </a> -->
               <!-- <a href="{{url('user_details')}}" class="dropdown-item has-icon">
                 <i class="fas fa-cog"></i> KYC 
               </a> -->

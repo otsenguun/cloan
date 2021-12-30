@@ -121,6 +121,27 @@
     </div>
   </div>
 
+  <div class="modal" tabindex="-1" role="coming_soon" id="coming_soon">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title confirm_header" ></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body text-center">
+          <h2>Тун удахгүй</h2>
+          <!-- <div class="show"></div> -->
+          <!-- <div> <a href="/" class="btn btn-primary" target="blank">PDF</a> </div> -->
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Хаах</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
 
 

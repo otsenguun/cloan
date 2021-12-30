@@ -257,7 +257,7 @@
         <footer class="bg-black text-center py-5">
             <div class="container px-5">
                 <div class="text-white-50 small">
-                    <div class="mb-2">&copy; CoinLend 2021. All Rights Reserved.</div>
+                    <div class="mb-2">&copy; Энэхүү вэб сайт нь “Койнлэнд” ХХК-ийн өмч болно.</div>
                     <a href="#!">Privacy</a>
                     <span class="mx-1">&middot;</span>
                     <a href="#!">Terms</a>

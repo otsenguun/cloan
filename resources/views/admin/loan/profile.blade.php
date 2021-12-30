@@ -109,8 +109,8 @@
                               </div>
                               <div class="col-md-12 text-center">
                                 <hr>
-                              <button class="btn btn-sm btn-info inc_button" coin="{{$crypto->CL_CRYPTO_NAME}}" c_address="{{$crypto->CL_PUB_ADDRESS}}">Орлого</button>
-                                  <button class="btn btn-sm btn-primary inc_button">Зарлага</button>
+                              <button disabled="disabled" class="btn btn-sm btn-info inc_button" coin="{{$crypto->CL_CRYPTO_NAME}}" c_address="{{$crypto->CL_PUB_ADDRESS}}">Орлого</button>
+                                  <button disabled="disabled" class="btn btn-sm btn-primary inc_button">Зарлага</button>
                               </div>
                             </div>
                    
@@ -152,8 +152,8 @@
                               </div>
                               <div class="col-md-12 text-center">
                                 <hr>
-                                <button class="btn btn-sm btn-info">Орлого</button>
-                                  <button class="btn btn-sm btn-primary">Зарлага</button>
+                                <button disabled="disabled" class="btn btn-sm btn-info">Орлого</button>
+                                  <button disabled="disabled" class="btn btn-sm btn-primary">Зарлага</button>
                               </div>
                             </div>
                           </div>
