@@ -104,9 +104,7 @@
                                         <stop class="gradient-end-color" offset="100%"></stop>
                                     </linearGradient>
                                 </defs>
-                                <circle cx="50" cy="50" r="50"></circle></svg><svg class="shape-1 d-none d-sm-block" viewBox="0 0 240.83 240.83" xmlns="http://www.w3.org/2000/svg">
-                                <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(120.42 -49.88) rotate(45)"></rect>
-                                <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(-49.88 120.42) rotate(-45)"></rect></svg><svg class="shape-2 d-none d-sm-block" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
+                             
                                     <img src="{{asset('images/coinlend_main.png')}}" alt="" class="main_img">
                                 <!-- <div class="device-wrapper" style="background-image: url('{{asset('images/main_page.jpg')}}');">
                                 <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
@@ -343,7 +341,7 @@
                     </div>
                 <div class="modal-body">
                     <span>
-                        &nbsp;Үйлчилгээний нөхцөл нь coinlend.mn виртуал хөрөнгийн үйлчилгээ үзүүлэхгүй холбоотой бүх талын харилцааг зохицуулна. Харилцагч үйлчилгээний нөхцөлтэй танилцаж зөвшөөрснөөр үйлчилгээтэй холбоотой холбоотой харилцаанд оролцох эрх
+                        &nbsp;Үйлчилгээний нөхцөл нь coinlend.mn виртуал хөрөнгийн үйлчилгээ үзүүлэхтэй холбоотой бүх талын харилцааг зохицуулна. Харилцагч үйлчилгээний нөхцөлтэй танилцаж зөвшөөрснөөр үйлчилгээтэй холбоотой холбоотой харилцаанд оролцох эрх
                         үүрэг, хариуцлагыг хүлээхээр талууд тохиролцсонд тооцогдоно.
                     </span>
                     <br />

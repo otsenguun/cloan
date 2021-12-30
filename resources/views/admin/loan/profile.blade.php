@@ -97,6 +97,11 @@
                          
                           <div class="card-body">
                              <div class="text-center">
+                               @php
+                                 $img = App\Helpers\AppHelper::getCryptoIMG($crypto->CL_CRYPTO_SNAME,0);
+                               @endphp
+                               <img src="data:image/png;base64,<?php echo base64_encode($img);?>" alt="Base 64 encoded!" style="width:50px;height:50px"/>
+                           
                                <h3>{{$crypto->CL_CRYPTO_SNAME}}</h3>
                              </div>
                              <hr>

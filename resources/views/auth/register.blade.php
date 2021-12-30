@@ -29,7 +29,7 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="text" value="И-мейл хаяг" />
+                <x-jet-label for="text" value="И-мэйл хаяг" />
                 <x-jet-input id="text" class="block mt-1 w-full" type="text" name="username" :value="old('text')" required />
             </div>
 

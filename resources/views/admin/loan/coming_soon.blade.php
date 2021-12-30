@@ -22,8 +22,8 @@
             <div class="card-header">
                 <!-- <h4></h4> -->
             </div>
-            <div class="card-body text-center">
-                <h1>Тун удахгүй</h1>
+            <div class="card-body text-center" style="height: 60vh;">
+                <h1 style="margin-top:20vh;">Тун удахгүй</h1>
             </div>
         </div>
         </div>
