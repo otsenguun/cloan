@@ -5,7 +5,8 @@ $user_roles = App\Helpers\AppHelper::getRole()
 <div class="main-sidebar sidebar-style-2">
         <aside id="sidebar-wrapper">
           <div class="sidebar-brand">
-            <a href="{{url('home')}}"> <img src="{{asset('images/coinlend_logo.png')}}" alt="" style="width:120px;"></a>
+          
+            <a href="{{url('home')}}"> <img src="{{asset('images/coinlend_logo.png')}}" alt="" style=" margin-top:20px; width:120px;"></a>
           </div>
           <div class="sidebar-brand sidebar-brand-sm">
             <a href="{{url('home')}}">CL</a>

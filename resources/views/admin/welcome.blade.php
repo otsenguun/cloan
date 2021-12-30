@@ -40,7 +40,7 @@
             .main_img{
                 width:500px;
                 z-index:1;
-                transform: perspective(1000px) rotateY(16deg) rotateX(2deg) rotateZ(-7deg) scaleY(0.95) translatex(2%);
+                transform: none;
                 box-shadow: 48px 16px 48px rgb(24 37 56 / 12%);
                 border-radius: 4px;
             }
@@ -107,7 +107,7 @@
                                 <circle cx="50" cy="50" r="50"></circle></svg><svg class="shape-1 d-none d-sm-block" viewBox="0 0 240.83 240.83" xmlns="http://www.w3.org/2000/svg">
                                 <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(120.42 -49.88) rotate(45)"></rect>
                                 <rect x="-32.54" y="78.39" width="305.92" height="84.05" rx="42.03" transform="translate(-49.88 120.42) rotate(-45)"></rect></svg><svg class="shape-2 d-none d-sm-block" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="50"></circle></svg>
-                                    <img src="{{asset('images/main_page.jpg')}}" alt="" class="main_img">
+                                    <img src="{{asset('images/coinlend_main.png')}}" alt="" class="main_img">
                                 <!-- <div class="device-wrapper" style="background-image: url('{{asset('images/main_page.jpg')}}');">
                                 <div class="device" data-device="iPhoneX" data-orientation="portrait" data-color="black">
                                     <div class="screen bg-black">
@@ -258,11 +258,11 @@
             <div class="container px-5">
                 <div class="text-white-50 small">
                     <div class="mb-2">&copy; Энэхүү вэб сайт нь “Койнлэнд” ХХК-ийн өмч болно.</div>
-                    <a href="#!">Privacy</a>
+                    <a href="#!">Нууцлал</a>
                     <span class="mx-1">&middot;</span>
-                    <a href="#!">Terms</a>
+                    <a href="#!" id ="nuhtsul" data-bs-toggle="modal" data-bs-target="#exampleModalLong">Үйлчилгээний нөхцөл</a>
                     <span class="mx-1">&middot;</span>
-                    <a href="#!">FAQ</a>
+                    <a href="#!">Түгээмэл асуултууд</a>
                 </div>
             </div>
         </footer>
@@ -332,6 +332,71 @@
                 </div>
             </div>
         </div>
+
+        <div class="modal fade bd-example-modal-lg" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+            
+                <div class="modal-header bg-gradient-primary-to-secondary p-4">
+                        <h5 class="modal-title font-alt text-white" id="feedbackModalLabel">COINLEND.MN-ИЙН ҮЙЛЧИЛГЭЭНИЙ НӨХЦӨЛ</h5>
+                        <button class="btn-close btn-close-white" type="button" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                <div class="modal-body">
+                    <span>
+                        &nbsp;Үйлчилгээний нөхцөл нь coinlend.mn виртуал хөрөнгийн үйлчилгээ үзүүлэхгүй холбоотой бүх талын харилцааг зохицуулна. Харилцагч үйлчилгээний нөхцөлтэй танилцаж зөвшөөрснөөр үйлчилгээтэй холбоотой холбоотой харилцаанд оролцох эрх
+                        үүрэг, хариуцлагыг хүлээхээр талууд тохиролцсонд тооцогдоно.
+                    </span>
+                    <br />
+                    <span>НЭГ:ЕРӨНХИЙ НӨХЦӨЛ&nbsp;</span><br />
+                    <span>
+                        1.1 &nbsp; Энэхүү үйлчилгээний нөхцөлийг нэг талаас Зээлдэгч, Зээлдүүлэгч хамтад нь &ldquo;Харилцагч&rdquo; нөгөө талаас виртуал хөрөнгийн үйлчилгээ үзүүлэгч цаашид &ldquo;Койнлэнд ХХК&rdquo; гэнэ. Хамтад нь талууд гэж
+                        нэрлэнэ.Талуудын харилцааг энэхүү үйлчилгээний нөхцөлөөр зохицуулна.
+                    </span><br>
+                    <span>1.2 &nbsp; Coinlend.mn нь Peer 2 Peer буюу харилцагч хооронд дундын зуучлалгүйгээр хоорондоо зээл өгөх, авах процессыг олгосон цахим платформ юм.&nbsp;</span>
+                    <br><span>1.3 &nbsp; Зээлдэгч гэж &ldquo;Койнлэнд ХХК&rdquo; апплакейшнд бүртгүүлж баталгаажсан зээлдэгчээр бүртгүүлсэн иргэн, хуулийн этгээдийг хэлнэ.&nbsp;</span>
+                    <br><span>1.4 &nbsp; Зээлдүүлэгч гэж &ldquo;Койнлэнд ХХК&rdquo; апплакейшнд бүртгүүлж баталгаажсан зээлдүүлэгчээр бүртгүүлсэн иргэн, хуулийн этгээдийг хэлнэ.&nbsp;</span>
+                    <br><span>ХОЁР: ХАРИЛЦАГЧДЫН ЭРХ ҮҮРЭГ</span>
+                    <br><span>1.1 &nbsp; Харилцагч нь энэхүү үйлчилгээний нөхцөлийг хатуу баримтлах бөгөөд энэхүү үйлчилгээний нөхцөлийг хүлээн зөвшөөрсөн тохиолдолд coinlend.mn апплакейшний үйлчилгээг авах эрхтэй болно.</span>
+                    <br><span>1.2 &nbsp; Харилцагч нь хувийн мэдээлэл &ldquo;Койнлэнд&rdquo; ХХК-ийг дагуу мэдээлж бүртгэл баталгаажсан үед үйлчилгээ авах боломжтой болно.</span>
+                    <br><span>1.3 &nbsp; Харилцагч нь аливаа хууль бус үйл ажиллагаа хийхгүй бөгөөд үйлдэл болгон нь бүртгэгдэж байна.</span>
+                    <br><span>1.4 &nbsp; Харилцагч энэхүү гэрээний 4.1 заасан шимтгэл төлөх үүрэгтэй.</span>
+                    <br><span>1.5 &nbsp; Харилцагч энэхүү гэрээний 4.2 заасан хүүг төлөх үүрэгтэй хэрэв хүүг төлөхөөс таталцвал барьцаа хөрөнгө болох виртуал хөрөнгийг хурааж зээлдэгчийг хохиролгүй болгоно.</span><br />
+                    <br><span>ГУРАВ: ВИРТУАЛ ҮЙЛЧИЛГЭЭ ҮЗҮҮЛЭГЧИЙН ЭРХ ҮҮРЭГ</span>
+                    <br><span>3.1 &ldquo;Койнлэнд&rdquo; ХХК нь харилцагчдад найдвартай тогтвортой виртуал хөрөнгийг барьцаалах боломжийг олгоно.&nbsp;</span>
+                    <br><span>3.2 &ldquo;Койнлэнд &ldquo;ХХК нь харилцагчдын виртуал хөрөнгийг хадгалах, зарцуулахад нь зөвлөгөө өгөх үүрэгтэй.</span>
+                    <br><span>3.3 &ldquo;Койнлэнд&rdquo; ХХК нь харилцагчид санхүүгийн үйлчилгээнээс учрах эрсдэлийг анхааруулсан байна.</span>
+                    <br><span>ДӨРӨВ: ҮЙЛЧИЛГЭЭ ҮЗҮҮЛЭГЧИЙН ШИМТГЭЛ, ТӨЛБӨР ТООЦОО</span>
+                    <br><span>4.1 &nbsp; Харилцагч нь &ldquo;Койнлэнд&rdquo; ХХК-д орлого хийхэд ямар нэгэн шимтгэл байхгүй бөгөөд зарлага болгонд 1%-ийн шимтгэл төлнө.</span>
+                    <br><span>4.2 &nbsp; Зээлдэгч нь мөнгөн хөрөнгө зээлж авсны төлөө хүү төлөх бөгөөд хүүг &ldquo;Койнлэнд&rdquo; ХХК тогтооно.</span>
+                    <br><span>4.3 &nbsp; Зээлдэгч нь мөнгөн хөрөнгийг тодорхой хугацаатай зээлэх бөгөөд зээлийн хугацаа хэтэрсэн тохиолдолд барьцаа хөрөнгө болох в</span>
+                    <br><span>4.4 &nbsp; Харилцагч нь мөнгөн хөрөнгөөр зээлдэгчид зээл өгөх ба зээлийн хүүний 80%-ийг зээлдүүлэгч өөрөө авна.</span>
+                    <br><span>ТАВ:ХАРИУЦЛАГА</span>
+                    <br><span>5.1 Талууд энэхүү гэрээний нөхцөлийг зөрчвөл хариуцлага хүлээнэ.</span>
+                    <br><span>ЗУРГАА: МАРГААН ШИЙДВЭРЛЭХ</span>
+                    <span>
+                        6.1 Аливаа үл ойлголцол гарсан тохиолдолд эхлээд &ldquo;Койнлэнд&rdquo;ХХК-д хандана уу. &ldquo;Койнлэнд&rdquo;ХХК таны асуудлыг 30 хоногийн дотор судалж, зохих хариу өгнө. &ldquo;Койнлэнд&rdquo;ХХК-аас Таны асуудлыг судлаад өгсөн
+                        хариу болон авсан арга хэмжээнд Та сэтгэл хангалуун бус байгаа тохиолдолд Монгол Улсын Олон Улсын Арбитрт хандаж маргааныг шийдвэрлүүлэх боломжтой. Таны болон &ldquo;Койнлэнд&rdquo;ХХК-аас ирүүлсэн, харилцан солилцсон и-мэйл болон
+                        цахим мэдэгдлүүдийг маргааныг шийдвэрлэх нотлох баримт гэж үзнэ.
+                    </span>
+                    <br />
+                    <span>ДОЛОО. НЭР ТОМЬЁО</span><br />
+                    <span>Зээлийн шимтгэл: Зээлдэгч зээлдүүлэгчид төлөх шимтгэл энэхүү шимтгэлийг coinlend.mn платформ тогтооно.</span><br />
+                    <span>Зээлийн хугацаа: coinlend.mn платформын зүгээс санал болгосон зээлийн төлбөрийн эргэн төлөлтийн эцсийн хугацааг хэлнэ.</span><br />
+                    <span>Барьцаа хөрөнгө: Энэ нь зээлдэгч зээл авах зорилгоор зээлдүүлэгчид барьцаалсан виртуал хөрөнгийг хэлнэ.</span><br />
+                    <span>Барьцаа хөрөнгө татан буулгах: Зээлдэгч зээлийн төлбөрөө хугацаанд нь төлөөгүй эсвэл LTV төвшин очсон тохиолдолд барьцаа хөрөнгийг татан буулгаж зээлдүүлэгчид шилжүүлнэ.</span><br />
+                    <span>LTV: Зээлдэгч барьцаа хөрөнгө болох виртуал хөрөнгийн хэдэн хувиар зээл авах тухай.</span><br />
+                    <span>&nbsp;</span><br />
+               
+                </div>
+            </div>
+
+        </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
+
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
@@ -341,5 +406,6 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+      
     </body>
 </html>
