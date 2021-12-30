@@ -315,20 +315,24 @@ class UserController extends Controller
 
         $body = [];
         $body['token'] = $request->token;
-        $body['password_new'] = $request->password_new_repeat;
+        $body['password_new'] = $request->password_new;
         $body['password_new_repeat'] = $request->password_new_repeat;
 
         $back = AppHelper::ToCurl("/manage/resettingPasswordWithToken","post",$body);
-
+        $token = $request->token;
         $response = json_decode($back['body']);
         
+        // dd($body);
+
         $msj = "";
         if(isset($response->success) && $response->success == true){
             $msj = "Нууц үг амжилттай солигдлоо";
+            return view('admin.loan.forgot_password_success',compact("msj"));
         }else{
-            $msj = "Амжилтгүй";
+            $msj = "Нууц үг хамгийн багадаа 8 оронтой 1 том үсэг, 1 жижиг үсэг, тоо, 1 тусгай тэмдэгт байна. Зай, мөр шилжиж болохгүй!";
+            return view('admin.loan.forgot_password',compact("token","msj"));
         }
-        return view('admin.loan.forgot_password_success',compact("msj"));
+        
 
     }
 

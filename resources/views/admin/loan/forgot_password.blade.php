@@ -8,9 +8,9 @@
            Шинээр нууц үгээ оруулна уу
         </div>
 
-        @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
+        @if (isset($msj))
+            <div class="mb-4 font-medium text-sm text-red-600">
+                {{ $msj }}
             </div>
         @endif
 
@@ -21,11 +21,11 @@
             <input type="hidden" name="token" value="{{$token}}">
             <div class="block">
                 <x-jet-label for="email" value="Нууц үг" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-jet-input id="email" class="block mt-1 w-full" type="password" name="password_new" :value="old('email')" required autofocus />
             </div>
             <div class="block">
                 <x-jet-label for="email" value="Нууц үг давт" />
-                <x-jet-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus />
+                <x-jet-input id="email" class="block mt-1 w-full" type="password" name="password_new_repeat" :value="old('email')" required autofocus />
             </div>
 
             <div class="flex items-center justify-end mt-4">

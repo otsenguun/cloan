@@ -70,7 +70,9 @@ Route::get('/email_confirm',[UserController::class,'emailconfirm'])->middleware(
 Route::get('/email_confirm_token',[UserController::class,'emailconfirmToken']);
 Route::post('/email_confirm',[UserController::class,'emailConfirmSubmit'])->middleware("auth2");
 
+
 Route::post('/forgot_password',[UserController::class,'forgotPassword']);
+Route::post('/UpdateForgotPassword',[UserController::class,'forgotPasswordUpdate']);
 Route::get('/forgot_password_token',[UserController::class,'forgotPasswordToken']);
 
 Route::get('/home',[AdminController::class,'admin'])->middleware("auth2");

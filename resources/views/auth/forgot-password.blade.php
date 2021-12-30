@@ -16,7 +16,7 @@
 
        
 
-        <form method="POST" action="#">
+        <form method="POST" action="{{url('forgot_password')}}">
             @csrf
 
             <div class="block">
