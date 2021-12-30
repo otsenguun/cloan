@@ -259,6 +259,7 @@ class UserController extends Controller
         return view('admin.loan.verify_email');
 
     }
+   
 
     public function emailconfirmToken(Request $request){
 
@@ -276,6 +277,58 @@ class UserController extends Controller
         }
 
         return view('admin.loan.verify_email_done',compact("msj"));
+
+    }
+
+    public function forgotPassword(Request $request){
+
+        $body = [];
+        $body['email'] = $request->email;
+        $body['challenge'] = "2Oxiu46KUX5ML2117705";
+
+        $back = AppHelper::ToCurl("/manage/resetPasswordSendEmail","post",$body);
+
+        $response = json_decode($back['body']);
+        
+        $msj = "";
+        if(isset($response->success) && $response->success == true){
+            $msj = "Баталгаажлаа";
+        }else{
+            $msj = "Амжилтгүй";
+        }
+
+        return view('admin.loan.forgot_password_info',compact("msj"));
+
+    }
+
+    public function forgotPasswordToken(Request $request){
+
+       
+        $token = $request->token;
+        // dd($token);
+
+        return view('admin.loan.forgot_password',compact("token"));
+
+    }
+
+    public function forgotPasswordUpdate(Request $request){
+
+        $body = [];
+        $body['token'] = $request->token;
+        $body['password_new'] = $request->password_new_repeat;
+        $body['password_new_repeat'] = $request->password_new_repeat;
+
+        $back = AppHelper::ToCurl("/manage/resettingPasswordWithToken","post",$body);
+
+        $response = json_decode($back['body']);
+        
+        $msj = "";
+        if(isset($response->success) && $response->success == true){
+            $msj = "Нууц үг амжилттай солигдлоо";
+        }else{
+            $msj = "Амжилтгүй";
+        }
+        return view('admin.loan.forgot_password_success',compact("msj"));
 
     }
 

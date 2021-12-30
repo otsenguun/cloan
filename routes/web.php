@@ -67,8 +67,11 @@ Route::post('/register2',[UserController::class,'register']);
 Route::get('/changePassword',[UserController::class,'changePass'])->middleware("auth2");
 Route::post('/changePassword',[UserController::class,'changePassword'])->middleware("auth2");
 Route::get('/email_confirm',[UserController::class,'emailconfirm'])->middleware("auth2");
-Route::get('/email_confirm_token',[UserController::class,'emailconfirmToken'])->middleware("auth2");
+Route::get('/email_confirm_token',[UserController::class,'emailconfirmToken']);
 Route::post('/email_confirm',[UserController::class,'emailConfirmSubmit'])->middleware("auth2");
+
+Route::post('/forgot_password',[UserController::class,'forgotPassword']);
+Route::get('/forgot_password_token',[UserController::class,'forgotPasswordToken']);
 
 Route::get('/home',[AdminController::class,'admin'])->middleware("auth2");
 Route::get('/me',[UserController::class,'me'])->middleware("auth2");
